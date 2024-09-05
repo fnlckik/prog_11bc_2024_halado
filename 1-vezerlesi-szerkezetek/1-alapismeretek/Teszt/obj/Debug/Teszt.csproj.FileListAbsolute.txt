@@ -1,0 +1,7 @@
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\bin\Debug\Teszt.exe.config
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\bin\Debug\Teszt.exe
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\bin\Debug\Teszt.pdb
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\obj\Debug\Teszt.csproj.AssemblyReference.cache
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\obj\Debug\Teszt.csproj.CoreCompileInputs.cache
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\obj\Debug\Teszt.exe
+H:\24-25\prog_11bc_2024_halado\1-vezerlesi-szerkezetek\1-alapismeretek\Teszt\obj\Debug\Teszt.pdb
