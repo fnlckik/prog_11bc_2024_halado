@@ -25,9 +25,17 @@ namespace BeolvasKiir
             */
 
             // 2. Téglalap terület két oldalból
+            //double a = Convert.ToDouble(Console.ReadLine());
+            //double b = Convert.ToDouble(Console.ReadLine());
+            //Console.WriteLine($"Terület: {a*b}");
+
+            // 3. Hányados
             int a = Convert.ToInt32(Console.ReadLine());
             int b = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Terület: {a*b}");
+            Console.WriteLine($"Hányados: {Convert.ToDouble(a) / b}");
+            Console.WriteLine($"Hányados: {(double)a / b}");
+            Console.WriteLine($"Hányados: {1.0 * a / b:0.000}");
+            Console.WriteLine($"Hányados: {1d * a / b:0 000.000}");
 
             Console.ReadKey();
         }
