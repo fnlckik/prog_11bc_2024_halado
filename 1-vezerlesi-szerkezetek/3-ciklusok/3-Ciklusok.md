@@ -16,7 +16,7 @@
 
 3. **Hatvány.** Határozzuk meg egy valós szám pozitív egész kitevős hatványát!
 
-    $$ a^n = a\cdot a\cdot \ldots \cdot a $$
+    *Emlék:* $ a^n = a\cdot a\cdot \ldots \cdot a $
 
 4. **Csengetés.** Egy iskolában az első tanóra 8:00-kor kezdődik. Minden óra 45 perc és minden szünet 10 perces. Írjuk ki, hogy mikor lesz a diákok első 8 órája!
 
