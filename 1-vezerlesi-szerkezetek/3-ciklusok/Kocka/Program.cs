@@ -6,7 +6,7 @@ namespace Kocka
     {
         static void Main(string[] args)
         {
-            Console.Write("Dobások száma: ");
+            Console.Write("a) Dobások száma: ");
             int n = Convert.ToInt32(Console.ReadLine());
 
             // Veszélyes változónevek:
@@ -22,7 +22,14 @@ namespace Kocka
             }
 
             // b) Dobáljuk a kockát amíg 6-ost nem kapunk!
-
+            Console.WriteLine();
+            Console.WriteLine("b) Dobás 6-ig:");
+            int dobas;
+            do
+            {
+                dobas = r.Next(1, 7);
+                Console.Write(dobas + " ");
+            } while (dobas != 6);
 
             Console.ReadKey();
         }
