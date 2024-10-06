@@ -1,4 +1,4 @@
-# 3. Statikus tömbök
+# 1. Statikus tömbök
 
 - Azonos típusú elemek sorozata
 - Indexelhető (0-tól)
