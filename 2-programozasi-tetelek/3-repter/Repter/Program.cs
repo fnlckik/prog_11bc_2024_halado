@@ -52,9 +52,87 @@ namespace Repter
                     db++;
                 }
             }
-            double atlag = osszeg / db;
-            Console.WriteLine($"3. {atlag:.00}");
+            if (db != 0)
+            {
+                double atlag = osszeg / db;
+                Console.WriteLine($"3. {atlag:.00}");
+            }
+            else
+            {
+                Console.WriteLine("3. Nincs 20 alatti tömeg!");
+            }
 
+            // F4 - Eldöntés (optimista)
+            // Cáfolatot keresünk (a keresendő tagadását)
+            i = 0;
+            while (i < n && !(tomegek[i] <= 5))
+            {
+                i++;
+            }
+            if (i < n)
+            {
+                Console.WriteLine("4. Nem igaz!");
+            }
+            else
+            {
+                Console.WriteLine("4. Igaz!");
+            }
+
+            // F5 - Megszámolás
+            db = 0;
+            for (i = 0; i < n; i++)
+            {
+                if (nevek[i].Length > 10)
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"5. {db}");
+
+            // F6 - Megszámolás
+            db = 0;
+            for (i = 0; i < n-1; i++)
+            {
+                if (tomegek[i] > tomegek[i+1])
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"6. {db}");
+
+            // F7 - Megszámolás + Keresés (kiválasztás)
+            i = 0;
+            while (!(nevek[i] == "Farkas Dóra"))
+            {
+                i++;
+            }
+            double csomag = tomegek[i];
+            db = 0;
+            for (i = 0; i < n; i++)
+            {
+                if (tomegek[i] < csomag)
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"7. {db}");
+
+            // F8 - Feltételes maximum kiválasztás
+            // Alex: ???
+            /*
+            int maxi = 0;
+            for (i = 0; i < n; i++)
+            {
+                if (tomegek[maxi] >= 10 && tomegek[maxi] <= 20)
+                {
+                    if (tomegek[i] > tomegek[maxi])
+                    {
+                        maxi = i;
+                    }
+                }
+            }
+            Console.WriteLine($"8. {nevek[maxi]}");
+            */
 
             Console.ReadKey();
         }
