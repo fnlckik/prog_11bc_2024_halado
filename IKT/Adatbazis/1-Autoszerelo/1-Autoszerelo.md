@@ -4,7 +4,7 @@ Egy autószerelő műhely adatbázisa két táblából áll:
    - **Ugyfelek**: Az ügyfelek adatait tárolja.
    - **Javitasok**: Az ügyfelek autóinak javítási adatait tartalmazza.
 
-Az `Ugyfelek` tábla és a `Javitasok` tábla között `1:N` kapcsolat van, mivel egy ügyfélhez több megrendelés is tartozhat, de minden javítás egy konkrét ügyfélhez kell tartozzon.
+Az `Ugyfel` és a `Javitas` tábla között `1:N` kapcsolat van, mivel egy ügyfélhez több megrendelés is tartozhat, de minden javítás egy konkrét ügyfélhez kell tartozzon.
 
 ## Adatok
 
