@@ -133,6 +133,51 @@ namespace Repter
             }
             Console.WriteLine($"8. {nevek[maxi]}");
             */
+            /*
+            int maxi = 0;
+            double maxTomeg = -1; // -végtelen
+            for (i = 0; i < n; i++)
+            {
+                if (10 <= tomegek[i] && tomegek[i] <= 20 && tomegek[i] > maxTomeg)
+                {
+                    maxi = i;
+                    maxTomeg = tomegek[i];
+                }
+            }
+            if (maxTomeg == -1)
+            {
+                Console.WriteLine("8. Nincs 10 és 20 kg közötti csomag.");
+            }
+            else
+            {
+                Console.WriteLine($"8. {nevek[maxi]}");
+            }
+            */
+
+            // F8 - Feltételes maximum
+            // Keresés + Maximum
+            i = 0;
+            while (i < n && !(10 <= tomegek[i] && tomegek[i] <= 20))
+            {
+                i++;
+            }
+            if (i < n)
+            {
+                // Megvan az első ilyen!
+                int maxi = i;
+                for (int j = i+1; j < n; j++)
+                {
+                    if (10 <= tomegek[j] && tomegek[j] <= 20 && tomegek[j] > tomegek[maxi])
+                    {
+                        maxi = j;
+                    }
+                }
+                Console.WriteLine($"8. {nevek[maxi]}");
+            }
+            else
+            {
+                Console.WriteLine("8. Nincs 10 és 20 kg közötti csomag.");
+            }
 
             Console.ReadKey();
         }
