@@ -1,0 +1,21 @@
+20
+Dániel 30 I
+Márta 28 H
+Béla 25 I
+Kata 23 H
+Viktor 36 I
+Cecília 17 H
+Emese 22 H
+József 29 H
+Ferenc 19 I
+Tímea 34 H
+Péter 31 H
+Irén 20 I
+Nándor 27 I
+László 26 I
+Orsolya 32 I
+Sándor 35 I
+Gabriella 21 I
+Réka 33 I
+Anna 18 I
+Henrik 24 H
