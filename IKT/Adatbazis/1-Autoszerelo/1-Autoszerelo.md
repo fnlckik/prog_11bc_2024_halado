@@ -35,7 +35,7 @@ A táblák felépítése és közöttük a kapcsolatot az alábbi diagram szeml�
    - Az `email` is kulcs a táblában!
    - Az `aktiv` attribútum jelöli, hogy az adott ügyfél autója jelenleg is a műhelyben van! Alapértelmezetten igaz értéket kap!
   
-3. A `Javitas` tábla a teljesített megbízások adatait tartalmazza
+3. A `Javitas` tábla a megbízások adatait tartalmazza
    - Az `id` elsődleges kulcs a táblában!
    - Az `ugyfel_id` idegen kulcs, amely az `Ugyfel` tábla elsődleges kulcsára hivatkozik!
    - Kötelező megadni az ügyfél azonosítóját, az autó rendszámát és a dátumot minden megrendeléshez!
