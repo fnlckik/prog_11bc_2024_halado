@@ -37,9 +37,18 @@ namespace Jogositvany
             }
 
             // F2 - Megszámolás
+            int db = 0;
+            for (i = 0; i < n; i++)
+            {
+                if (jogsik[i])
+                {
+                    db++;
+                }
+            }
+            double szazalek = (double) db / n * 100;
+            Console.WriteLine($"2. {szazalek}%");
 
-
-            // F3 - Keresés
+            // F3 - Keresés -> while
 
 
             //Console.ReadKey();
