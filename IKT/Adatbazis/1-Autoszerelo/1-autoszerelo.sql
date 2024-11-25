@@ -22,6 +22,22 @@ VALUES
 ("Fekete Laci", NULL, NULL, FALSE);
 */
 
+-- F3
+-- datum: Mikor adták le az autót javításra?
+-- TEXT: jelentősen változó hosszú szöveg
+-- Összetett kulcs leírása: UNIQUE (ugyfel_id, rendszam, datum)
+DROP TABLE IF EXISTS Javitas;
+CREATE TABLE Javitas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    ugyfel_id INT NOT NULL,
+    rendszam CHAR(6) NOT NULL,
+    datum DATE NOT NULL,
+    koltseg INT,
+    leiras TEXT,
+    FOREIGN KEY (ugyfel_id) REFERENCES Ugyfel(id),
+    CONSTRAINT UQ_Javitas_ugyfelId_rendszam_datum UNIQUE (ugyfel_id, rendszam, datum)
+);
+
 -- F4
 INSERT INTO Ugyfel (nev, email, telefon, aktiv)
 VALUES
