@@ -32,11 +32,24 @@ CREATE TABLE Javitas (
     ugyfel_id INT NOT NULL,
     rendszam CHAR(6) NOT NULL,
     datum DATE NOT NULL,
-    koltseg INT,
+    koltseg INT DEFAULT 12000,
     leiras TEXT,
     FOREIGN KEY (ugyfel_id) REFERENCES Ugyfel(id),
-    CONSTRAINT UQ_Javitas_ugyfelId_rendszam_datum UNIQUE (ugyfel_id, rendszam, datum)
+    CONSTRAINT UQ_Javitas_ugyfelId_rendszam_datum UNIQUE (ugyfel_id, rendszam, datum),
+    CONSTRAINT CHK_Javitas_koltseg CHECK (12000 <= koltseg && koltseg <= 500000)
 );
+-- Másképp:
+-- CHECK (12000 <= koltseg AND koltseg <= 500000)
+-- CHECK (12000 <= koltseg && koltseg <= 500000)
+
+-- Példa:
+/*
+INSERT INTO javitas (ugyfel_id, rendszam, datum, koltseg)
+VALUES (1, "HKG141", CURRENT_DATE, 42000);
+
+INSERT INTO javitas (ugyfel_id, rendszam, datum, koltseg)
+VALUES (2, "HKG141", CURDATE(), 42000);
+*/
 
 -- F4
 INSERT INTO Ugyfel (nev, email, telefon, aktiv)
