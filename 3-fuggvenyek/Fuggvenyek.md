@@ -50,6 +50,8 @@
 
 ---
 
+## Számelmélet
+
 8. Írj függvényt, amely egy `p` pozitív egész számról eldönti, hogy prímszám-e! Használd fel a függvényt arra, hogy egy számokat tartalmazó tömbből kiválogasd a prímszámokat!
 
     Példa:
