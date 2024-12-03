@@ -1,4 +1,4 @@
-# 1. Függvények, eljárások
+# Függvények, eljárások
 
 ## Függvények
 
@@ -40,13 +40,13 @@
 
 </div>
 
-1. Készíts `Kiir(s)` néven eljárást, amely paraméterként kap egy szöveget, majd sorsol egy random számot 3 és 9 között, és a szöveget annak megfelelő mennyiségű alkalommal jeleníti meg a konzolon!
+4. Készíts `Kiir(s)` néven eljárást, amely paraméterként kap egy szöveget, majd sorsol egy random számot 3 és 9 között, és a szöveget annak megfelelő mennyiségű alkalommal jeleníti meg a konzolon!
 
-2. Írj `Beolvas(n)` nevű eljárást, ami beolvassa az `n` egész típusú változó értékét, majd eltárolja azt! A fő program ezután kiírja a beolvasott érték négyzetgyökét a konzolra!
+5. Írj `Beolvas(n)` nevű eljárást, ami beolvassa az `n` egész típusú változó értékét, majd eltárolja azt! A fő program ezután kiírja a beolvasott érték négyzetgyökét a konzolra!
 
-3. A `Duplaz(a)` eljárás megváltoztatja az `a` paramétere értékét a duplájára amennyiben az páratlan! (Páros esetén marad az eredeti érték.)
+6. A `Duplaz(a)` eljárás megváltoztatja az `a` paramétere értékét a duplájára amennyiben az páratlan! (Páros esetén marad az eredeti érték.)
 
-4. A `Novel(t)` eljárás a `t` tömb minden elemét növelje meg egyel! Programozd le!
+7. A `Novel(t)` eljárás a `t` tömb minden elemét növelje meg egyel! Programozd le!
 
 ---
 
