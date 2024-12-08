@@ -20,5 +20,7 @@
 4. Adjuk meg a legnagyobb elem helyét! `(1, 3)`
 
 5. Mennyi az elemek összege
-    a. soronként; `36 16 15`
-    b. oszloponként? `12 1 38 16`
+   
+   a. soronként; `36 16 15`
+   
+   b. oszloponként? `12 1 38 16`
