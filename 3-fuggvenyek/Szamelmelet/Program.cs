@@ -52,6 +52,23 @@ namespace Szamelmelet
             return db;
         }
 
+        static int SokOsztos(int[] a)
+        {
+            int i = 0;
+            while (i < a.Length && !(OsztokSzama(a[i]) >= 20))
+            {
+                i++;
+            }
+            if (i < a.Length)
+            {
+                return a[i];
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
         static void Main(string[] args)
         {
             // Prímszámok kiválogatása - Kiválogatás + Eldöntés
@@ -63,7 +80,9 @@ namespace Szamelmelet
             Console.WriteLine();
 
             // Sok osztós szám - Keresés + Megszámolás
-            Console.WriteLine(OsztokSzama(1));
+            int[] szamok2 = { 6, 1001, 48, 360, 75 };
+            //Console.WriteLine(OsztokSzama(360));
+            Console.WriteLine("Sok osztós: " + SokOsztos(szamok2));
         }
     }
 }
