@@ -32,16 +32,37 @@ namespace Meleg
             return maxe;
         }
 
+        static bool MelegE(int[,] h, int m, int i, int maxe)
+        {
+            int j = 0; // j. nap
+            while (j < m && !(h[i, j] == maxe))
+            {
+                j++;
+            }
+            return j < m; // Van-e olyan nap, amikor itt legmelegebb van?
+        }
+
         static void Kivalogat(int[,] h, int n, int m, int[] melegek, out int db)
         {
             db = 0;
             int maxe = Maximum(h, n, m);
-            Console.WriteLine(maxe);
+            for (int i = 0; i < n; i++) // i. telepules
+            {
+                if (MelegE(h, m, i, maxe))
+                {
+                    melegek[db] = i;
+                    db++;
+                }
+            }
         }
 
         static void Kiir(int[] x, int n)
         {
-            // ???
+            Console.Write(n);
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($" {x[i] + 1}");
+            }
         }
 
         static void Main(string[] args)
