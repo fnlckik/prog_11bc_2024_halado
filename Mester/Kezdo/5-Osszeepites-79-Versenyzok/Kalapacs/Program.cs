@@ -23,8 +23,29 @@ namespace Kalapacs
             Beolvas(dobasok, out int n); // n: versenyzők száma
             //Kiir(dobasok, n);
 
-            Console.WriteLine(MegbizhatoE(dobasok, 0)); // true
-            Console.WriteLine(MegbizhatoE(dobasok, 1)); // false
+            //Console.WriteLine(MegbizhatoE(dobasok, 0)); // true
+            //Console.WriteLine(MegbizhatoE(dobasok, 1)); // false
+            Kivalogat(dobasok, n);
+        }
+
+        static void Kivalogat(int[,] dobasok, int n)
+        {
+            int[] megbizhatok = new int[100];
+            int db = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (MegbizhatoE(dobasok, i))
+                {
+                    megbizhatok[db] = i + 1;
+                    db++;
+                }
+            }
+
+            Console.WriteLine(db);
+            for (int i = 0; i < db; i++)
+            {
+                Console.Write(megbizhatok[i] + " ");
+            }
         }
 
         static bool MegbizhatoE(int[,] dobasok, int i)
@@ -32,14 +53,15 @@ namespace Kalapacs
             int j = 0;
             int mine = dobasok[i, 0];
             int maxe = dobasok[i, 0];
-            while (j < 6 && !(dobasok[i, j] == -1 || maxe - mine > 500))
+            bool megbizhatoE = true;
+            while (j < 6 && megbizhatoE)
             {
                 if (dobasok[i, j] < mine) mine = dobasok[i, j];
                 if (dobasok[i, j] > maxe) maxe = dobasok[i, j];
+                megbizhatoE = dobasok[i, j] != -1 && maxe - mine <= 500;
                 j++;
             }
-            if (j < 6) return false;
-            else return true;
+            return megbizhatoE;
         }
 
         // Az i. versenyző (sor) megbízható-e?
