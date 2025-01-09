@@ -13,6 +13,19 @@ namespace Eredmenytelen
             int[,] pontok = new int[100, 100]; // pontok[i, j]: i. versenyen j. tanuló pontszáma
             int[] indulok = new int[100]; // indulok[i]: az i. versenyen indulók száma
             Beolvas(out n, out m, hatarok, tanulok, pontok, indulok);
+            Kiir(pontok, m, indulok);
+        }
+
+        static void Kiir(int[,] pontok, int m, int[] indulok)
+        {
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < indulok[i]; j++)
+                {
+                    Console.Write(pontok[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
         }
 
         static void Beolvas(out int n, out int m, int[] hatarok, int[,] tanulok, int[,] pontok, int[] indulok)
@@ -24,6 +37,16 @@ namespace Eredmenytelen
             for (int i = 0; i < m; i++)
             {
                 hatarok[i] = Convert.ToInt32(sor[i]);
+            }
+            for (int i = 0; i < m; i++)
+            {
+                sor = Console.ReadLine().Split(' '); // {"3", "1", "10", "2", "30", "3", "10"}
+                indulok[i] = Convert.ToInt32(sor[0]);
+                for (int j = 0; j < indulok[i]; j++)
+                {
+                    tanulok[i, j] = Convert.ToInt32(sor[2 * j + 1]); // páratlan indexek
+                    pontok[i, j] = Convert.ToInt32(sor[2 * j + 2]); // tanulókat követők
+                }
             }
         }
     }
