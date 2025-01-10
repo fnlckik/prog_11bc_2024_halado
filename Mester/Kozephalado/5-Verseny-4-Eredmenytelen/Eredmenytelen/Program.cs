@@ -26,9 +26,32 @@ namespace Eredmenytelen
             {
                 if (EredmenytelenE(pontok, i, hatarok, indulok[i]))
                 {
-
+                    eredmenytelenek[db] = i;
+                    db++;
                 }
             }
+            Kiir(eredmenytelenek, db);
+        }
+
+        // function overloading (függvény túlterhelés)
+        static void Kiir(int[] eredmenytelenek, int db)
+        {
+            Console.Write(db + " ");
+            for (int i = 0; i < db; i++)
+            {
+                Console.Write(eredmenytelenek[i] + 1 + " ");
+            }
+        }
+
+        // Az i. sor (verseny) eredménytelen-e?
+        static bool EredmenytelenE(int[,] pontok, int i, int[] hatarok, int db)
+        {
+            int j = 0;
+            while (j < db && pontok[i, j] < hatarok[i])
+            {
+                j++;
+            }
+            return j >= db;
         }
 
         static void Kiir(int[,] pontok, int m, int[] indulok)
