@@ -10,6 +10,39 @@ namespace Halak
             Beolvas(h, out int n, out int m);
             Feladat2(h, n, m);
             Feladat3(h, n, m);
+            Feladat4(h, n, m);
+        }
+
+        static void Feladat4(int[,] h, int n, int m)
+        {
+            Console.Write("4. feladat: ");
+            bool megvan = false;
+            int i = 0;
+            while (i < m && !megvan) // i. oszlop
+            {
+                megvan = MindMax2(h, n, i);
+                i++;
+            }
+            if (megvan)
+            {
+                Console.WriteLine(i);
+            }
+            else
+            {
+                Console.WriteLine(-1);
+            }
+        }
+
+        // Igaz-e, hogy az i. oszlopban minden érték max 2
+        // Optimista eldöntés
+        static bool MindMax2(int[,] h, int n, int i)
+        {
+            int j = 0; // j. sor
+            while (j < n && h[j, i] <= 2)
+            {
+                j++;
+            }
+            return j >= n;
         }
 
         static void Feladat3(int[,] h, int n, int m)
