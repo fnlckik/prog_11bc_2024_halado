@@ -16,19 +16,43 @@ namespace Dijazottak
             List<string> c = new List<string>(); // III. díjasok
             List<string> d = new List<string>(); // nem díjasok
             Kivalogatas(nevek, pontok, maxpont, a, b, c, d);
+
+            Kiir(a);
+            Kiir(b);
+            Kiir(c);
+            Kiir(d);
+        }
+
+        static void Kiir(List<string> nevek)
+        {
+            Console.Write(nevek.Count + ";");
+            foreach (string nev in nevek)
+            {
+                Console.Write(nev + ";");
+            }
+            Console.WriteLine();
         }
 
         static void Kivalogatas(List<string> nevek, List<int> pontok, int maxpont, List<string> a, List<string> b, List<string> c, List<string> d)
         {
             for (int i = 0; i < nevek.Count; i++)
             {
-                if ((double)pontok[i] / maxpont * 100 >= 90)
+                double szazalek = (double)pontok[i] / maxpont * 100;
+                if (szazalek >= 90)
                 {
                     a.Add(nevek[i]);
                 }
-                else if ((double)pontok[i] / maxpont * 100 >= 80)
+                else if (szazalek >= 80)
                 {
                     b.Add(nevek[i]);
+                }
+                else if (szazalek >= 70)
+                {
+                    c.Add(nevek[i]);
+                }
+                else
+                {
+                    d.Add(nevek[i]);
                 }
             }
         }
