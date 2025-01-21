@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace ListakListaja
 {
@@ -30,11 +31,34 @@ namespace ListakListaja
             Console.WriteLine();
 
             // --------------------------------------------
+            Console.Clear();
 
+            List<List<int>> jegyek = new List<List<int>>();
+            Beolvas(jegyek);
 
+            Console.WriteLine("Jegyek: ");
+            Print(jegyek);
+
+            // 4,4 4,75 2 ...
+            // Atlagok(jegyek);
         }
 
-        static void Print(List<List<string>> etelek)
+        static void Beolvas(List<List<int>> jegyek)
+        {
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                string[] sor = Console.ReadLine().Split(' ');
+                List<int> tanulo = new List<int>();
+                foreach (string elem in sor)
+                {
+                    tanulo.Add(int.Parse(elem));
+                }
+                jegyek.Add(tanulo);
+            }
+        }
+
+        static void Print<T>(List<List<T>> etelek)
         {
             for (int i = 0; i < etelek.Count; i++)
             {
