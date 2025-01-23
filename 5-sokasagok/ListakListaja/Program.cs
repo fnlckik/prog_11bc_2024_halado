@@ -40,7 +40,23 @@ namespace ListakListaja
             Print(jegyek);
 
             // 4,4 4,75 2 ...
-            // Atlagok(jegyek);
+            Atlagok(jegyek);
+        }
+
+        static void Atlagok(List<List<int>> naplo)
+        {
+            foreach (List<int> tanulo in naplo)
+            {
+                int s = 0;
+                foreach (int jegy in tanulo)
+                {
+                    s += jegy;
+                }
+                double atlag = (double)s / tanulo.Count;
+                //Console.Write($"{atlag:0.00} ");
+                Console.Write(Math.Round(atlag, 2) + " ");
+            }
+            Console.WriteLine();
         }
 
         static void Beolvas(List<List<int>> jegyek)
