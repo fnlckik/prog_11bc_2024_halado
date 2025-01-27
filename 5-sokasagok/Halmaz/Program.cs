@@ -20,8 +20,7 @@ namespace Halmaz
             halmaz.Remove(7); // 5 2 9 13
             halmaz.Add(13);
             halmaz.Remove(7);
-            Console.Write("Halmaz elemei: ");
-            Kiir(halmaz);
+            Kiir("Halmaz elemei: ", halmaz);
 
             Console.WriteLine();
             Console.WriteLine("----------------------------------");
@@ -29,11 +28,44 @@ namespace Halmaz
 
             HashSet<string> zrinyi = new HashSet<string> { "Bence", "Réka", "Máté", "Pisti", "Johanna", "Kata" };
             HashSet<string> oktv = new HashSet<string> { "Máté", "Zalán", "Csaba", "Kata", "Bence" };
+            Kiir("Zrínyi résztvevők: ", zrinyi);
+            Kiir("OKTV résztvevők: ", oktv);
+            Kiir("Zrínyi ÉS OKTV résztvevők: ", Metszet(zrinyi, oktv));
+            Kiir("Zrínyi VAGY OKTV résztvevők: ", Unio(zrinyi, oktv));
         }
 
-        static void Kiir(HashSet<int> halmaz)
+        static HashSet<string> Unio(HashSet<string> h1, HashSet<string> h2)
         {
-            foreach (int elem in halmaz)
+            HashSet<string> unio = new HashSet<string>();
+            foreach (string elem in h1)
+            {
+                unio.Add(elem);
+            }
+            foreach (string elem in h2)
+            {
+                unio.Add(elem);
+            }
+            return unio;
+        }
+
+        // Metszet tétel
+        static HashSet<string> Metszet(HashSet<string> h1, HashSet<string> h2)
+        {
+            HashSet<string> metszet = new HashSet<string>();
+            foreach (string elem in h1)
+            {
+                if (h2.Contains(elem))
+                {
+                    metszet.Add(elem);
+                }
+            }
+            return metszet;
+        }
+
+        static void Kiir<T>(string szoveg, HashSet<T> halmaz)
+        {
+            Console.Write(szoveg);
+            foreach (T elem in halmaz)
             {
                 Console.Write(elem + " ");
             }
