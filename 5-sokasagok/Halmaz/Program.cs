@@ -10,7 +10,7 @@ namespace Halmaz
             // Halmaz: elemei egyediek, sorrend nincs => nem indexelhető
             HashSet<int> halmaz = new HashSet<int> { 5, 2, 9, 2, 2, 5, 7 }; // 5 2 9 7
             Console.WriteLine("Halmaz elemszáma: " + halmaz.Count);
-
+            
             // Ilyet nem lehet!
             //Console.WriteLine("1. elem: " + halmaz[0]);
 
@@ -37,10 +37,74 @@ namespace Halmaz
             HashSet<string> bitfarago = new HashSet<string> { "Máté", "Csaba", "Zalán" };
             Console.WriteLine("Részhalmaza(bitfarago, zrinyi)? " + ReszhalmazaE(bitfarago, zrinyi)); // false
             Console.WriteLine("Részhalmaza(bitfarago, oktv)? " + ReszhalmazaE(bitfarago, oktv)); // true
+
+            Console.WriteLine("Vankozos(bitfarago, zrinyi)? " + VanKozos(bitfarago, zrinyi)); // true
+
+            Print(bitfarago);
+
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine();
+
+            HashSet<string> metszet = new HashSet<string>(zrinyi);
+            metszet.IntersectWith(oktv);
+            metszet.IntersectWith(bitfarago);
+            Kiir("Mindhárom: ", metszet);
+
+            HashSet<string> unio = new HashSet<string>(zrinyi);
+            unio.UnionWith(oktv);
+            Kiir("Zrínyi VAGY OKTV résztvevők: ", unio);
+
+            HashSet<string> kulonbseg = new HashSet<string>(zrinyi);
+            kulonbseg.ExceptWith(oktv);
+            Kiir("Zrínyin indult, OKTV-n nem: ", kulonbseg);
+
+            Console.WriteLine("Részhalmaza(bitfarago, zrinyi)? " + bitfarago.IsSubsetOf(zrinyi));
+            Console.WriteLine("Részhalmaza(bitfarago, oktv)? " + bitfarago.IsSubsetOf(oktv));
+            Console.WriteLine("Részhalmaza(bitfarago, oktv)? " + oktv.IsSupersetOf(bitfarago)); // oktv tartalmazza bitfarago-t
+
+            Console.WriteLine("VanKözös(bitfarago, zrinyi)? " + bitfarago.Overlaps(zrinyi));
+        }
+
+        // Van-e közös eleme h1-nek és h2-nek?
+        static bool VanKozos(HashSet<string> h1, HashSet<string> h2)
+        {
+            foreach (string elem in h1)
+            {
+                if (h2.Contains(elem))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Igaz-e, hogy h1 részhalmaza h2-nek?
+        static bool ReszhalmazaE2(HashSet<string> h1, HashSet<string> h2)
+        {
+            HashSet<string>.Enumerator iterator = h1.GetEnumerator();
+            bool resze = true;
+            while (iterator.MoveNext() && resze)
+            {
+                resze = h2.Contains(iterator.Current);
+            }
+            return resze;
+        }
+
+        static void Print(HashSet<string> halmaz)
+        {
+            Console.Write("Halmaz iterátorral: ");
+            HashSet<string>.Enumerator iterator = halmaz.GetEnumerator();
+            while (iterator.MoveNext())
+            {
+                Console.Write(iterator.Current + " ");
+            }
+            Console.WriteLine();
         }
 
         // Részhalmaza-e h1 halmaz h2-nek?
         // Igaz-e, hogy h1 minden eleme h2-nek is eleme?
+        // syntactic sugar (szintaktikai cukor)
         static bool ReszhalmazaE(HashSet<string> h1, HashSet<string> h2)
         {
             foreach (string elem in h1)
