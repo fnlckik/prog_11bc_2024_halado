@@ -41,20 +41,53 @@ namespace Szotar
                                                          "körte", "alma", "narancs" };
             // Ötlet: egy szótárban számoljuk meg, hogy melyik gyümölcsből hány van?
             Dictionary<string, int> mennyisegek = Megszamol(gyumolcsok);
+            Kiir(mennyisegek);
+
+            Leggyakoribb(mennyisegek);
+
+            // Átlagosan hány van egy gyümölcsből a tálban? (összegzés)
+
+            // Van-e olyan gyümölcs, amiből pontosan 1 darab van?
         }
 
+        static void Leggyakoribb(Dictionary<string, int> mennyisegek)
+        {
+            int maxert = Int32.MinValue;
+            string maxkulcs = "-";
+            foreach (string gyumolcs in mennyisegek.Keys)
+            {
+                if (mennyisegek[gyumolcs] > maxert)
+                {
+                    maxkulcs = gyumolcs;
+                    maxert = mennyisegek[gyumolcs];
+                }
+            }
+            Console.WriteLine("Leggyakoribb gyümölcs: " + maxkulcs);
+        }
+
+        // narancs: 3, alma: 4, szilva: 1, körte: 1
         static Dictionary<string, int> Megszamol(List<string> gyumolcsok)
         {
             Dictionary<string, int> mennyisegek = new Dictionary<string, int>();
-            // ???
+            foreach (string gyumolcs in gyumolcsok)
+            {
+                if (!mennyisegek.ContainsKey(gyumolcs))
+                {
+                    mennyisegek.Add(gyumolcs, 1);
+                }
+                else
+                {
+                    mennyisegek[gyumolcs]++;
+                }
+            }
             return mennyisegek;
         }
 
-        static void Kiir(Dictionary<string, string> szotar)
+        static void Kiir<TKey, TValue>(Dictionary<TKey, TValue> szotar)
         {
-            Console.WriteLine("\nMagyar - Angol szótár:");
+            Console.WriteLine("\nSzótár:");
             // Dictionary<string, string>.KeyCollection kulcsok = szotar.Keys;
-            foreach (string kulcs in szotar.Keys)
+            foreach (TKey kulcs in szotar.Keys)
             {
                 Console.WriteLine(kulcs + " - " + szotar[kulcs]);
             }
