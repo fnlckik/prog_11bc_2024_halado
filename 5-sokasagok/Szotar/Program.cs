@@ -46,8 +46,36 @@ namespace Szotar
             Leggyakoribb(mennyisegek);
 
             // Átlagosan hány van egy gyümölcsből a tálban? (összegzés)
+            Atlag(mennyisegek);
 
             // Van-e olyan gyümölcs, amiből pontosan 1 darab van?
+            // Ha van, akkor adjunk meg egyet!
+            string gy = PontEgy(mennyisegek);
+            Console.WriteLine("Csak egy van a tálban a következő gyümölcsből: " +  gy);
+        }
+
+        static string PontEgy(Dictionary<string, int> mennyisegek)
+        {
+            foreach (string item in mennyisegek.Keys)
+            {
+                if (mennyisegek[item] == 1)
+                {
+                    return item;
+                }
+            }
+            return "-";
+        }
+
+        static void Atlag(Dictionary<string, int> mennyisegek)
+        {
+            int ossz = 0;
+            foreach (string item in mennyisegek.Keys)
+            {
+                ossz += mennyisegek[item];
+            }
+
+            double atlag = (double)ossz / mennyisegek.Count;
+            Console.WriteLine("Átlagos mennyiség egy gyümölcsből: " + atlag);
         }
 
         static void Leggyakoribb(Dictionary<string, int> mennyisegek)
