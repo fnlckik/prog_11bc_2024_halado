@@ -18,6 +18,20 @@ namespace Vonat
             HashSet<string> v1 = new HashSet<string> { "Budapest-Nyugati", "Zugló", "Kőbánya alsó", "Kőbánya-Kispest", "Ferihegy", "Monor", "Monorierdő", "Pilis", "Albertirsa", "Ceglédbercel", "Ceglédbercel-Cserő", "Budai út", "Cegléd" };
             HashSet<string> v2 = new HashSet<string> { "Budapest-Nyugati", "Zugló", "Kőbánya-Kispest", "Ferihegy", "Cegléd", "Nagykőrös", "Kecskemét", "Kiskunfélegyháza", "Kistelek", "Szatymaz", "Szeged" };
             HashSet<string> csakelso = CsakElsoAllomasok(v1, v2);
+            Console.WriteLine("a)");
+            foreach (string allomas in csakelso)
+            {
+                Console.WriteLine(allomas);
+            }
+            Console.WriteLine("b) " + KozosekSzama(v1, v2));
+            Console.WriteLine("c) " + v1.IsSubsetOf(v2));
+        }
+
+        static int KozosekSzama(HashSet<string> v1, HashSet<string> v2)
+        {
+            HashSet<string> metszet = new HashSet<string>(v1);
+            metszet.IntersectWith(v2);
+            return metszet.Count;
         }
 
         static HashSet<string> CsakElsoAllomasok(HashSet<string> v1, HashSet<string> v2)
