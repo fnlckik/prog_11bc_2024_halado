@@ -11,7 +11,7 @@ namespace Rendezes
             Stopwatch ora = new Stopwatch();
 
             //List<int> lista = new List<int> { 3, 6, 2, 3, 5 };
-            const int n = 20000;
+            const int n = 200;
             List<int> lista = Feltolt(n);
             //List<int> lista = FeltoltRendezett(n);
             Console.WriteLine("Elemek száma: " + n);
@@ -54,6 +54,9 @@ namespace Rendezes
 
         }
 
+        // !!!
+        // 1. Logaritmikus keresés
+        // 2. List -> LinkedList
         static void Beszurasos(ref List<int> lista)
         {
             List<int> rendezett = new List<int>();
@@ -65,14 +68,15 @@ namespace Rendezes
                 {
                     i++;
                 }
-                if (i < rendezett.Count)
-                {
-                    rendezett.Insert(i, elem);
-                }
-                else
-                {
-                    rendezett.Add(elem);
-                }
+                rendezett.Insert(i, elem);
+                //if (i < rendezett.Count)
+                //{
+                //    rendezett.Insert(i, elem);
+                //}
+                //else
+                //{
+                //    rendezett.Add(elem);
+                //}
             }
             lista = rendezett;
         }
