@@ -10,10 +10,74 @@ namespace Fajlok
         {
             Dictionary<string, int> kedvencek = new Dictionary<string, int>();
             //Olvas(kedvencek);
-            //Olvas2(kedvencek);
+            Olvas2(kedvencek);
             //Olvas3(kedvencek);
-            Olvas4(kedvencek);
+            //Olvas4(kedvencek);
+            //Olvas5(kedvencek);
+            //Olvas6(kedvencek);
+            //Olvas7(kedvencek);
+
             Kiir(kedvencek);
+        }
+
+        // C# programozók nagyon szeretik
+        // Gond: Flatten your code (clean code)
+        static void Olvas7(Dictionary<string, int> kedvencek)
+        {
+            using (StreamReader reader = new StreamReader("primek.txt"))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string sor = reader.ReadLine();
+                    string[] adatok = sor.Split(' ');
+                    kedvencek.Add(adatok[0], int.Parse(adatok[1]));
+                }
+            }
+        }
+
+        // Manóka függvény
+        static void Olvas6(Dictionary<string, int> kedvencek)
+        {
+            StreamReader reader = new StreamReader("primek.txt");
+            string nev = "";
+            string szam = "";
+            bool szokoz = false;
+            while (!reader.EndOfStream)
+            {
+                char c = (char)reader.Read();
+                //Console.Write(c);
+                if (c == ' ')
+                {
+                    szokoz = true;
+                }
+                else if (c == '\n')
+                {
+                    szokoz = false;
+                    kedvencek.Add(nev, int.Parse(szam));
+                    nev = "";
+                    szam = "";
+                }
+                else if (!szokoz)
+                {
+                    nev += c;
+                }
+                else
+                {
+                    szam += c;
+                }
+            }
+            reader.Close();
+        }
+
+        static void Olvas5(Dictionary<string, int> kedvencek)
+        {
+            string[] sorok = File.ReadAllLines("primek.txt");
+            //Console.WriteLine(sorok.Length);
+            foreach (string sor in sorok)
+            {
+                string[] adatok = sor.Split(' ');
+                kedvencek.Add(adatok[0], int.Parse(adatok[1]));
+            }
         }
 
         // Nem javasolt!
@@ -59,6 +123,8 @@ namespace Fajlok
             }
         }
 
+        // FNL favourite
+        // const int fene = 205
         static void Olvas2(Dictionary<string, int> kedvencek)
         {
             StreamReader reader = new StreamReader("primek.txt");
