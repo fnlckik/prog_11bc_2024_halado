@@ -17,7 +17,20 @@ namespace Fajlok
             //Olvas6(kedvencek);
             //Olvas7(kedvencek);
 
-            Kiir(kedvencek);
+            Ir(kedvencek);
+        }
+
+        static void Ir(Dictionary<string, int> kedvencek)
+        {
+            // Hozzáfűzés (append): true
+            //StreamWriter writer = new StreamWriter("nemprimek.txt", true);
+            StreamWriter writer = new StreamWriter("nemprimek.txt");
+            foreach (string nev in kedvencek.Keys)
+            {
+                writer.WriteLine($"{nev} -- {kedvencek[nev] * 5}");
+            }
+            writer.Close();
+            File.WriteAllText("valami.txt", "Ez a tartalom\nIzébigyó!");
         }
 
         // C# programozók nagyon szeretik
