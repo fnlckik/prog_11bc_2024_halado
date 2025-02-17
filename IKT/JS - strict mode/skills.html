@@ -1,0 +1,38 @@
+<script>
+    "use strict";
+
+    // 1.
+    // console.log(typeof(let = 10));
+    
+    // 2.
+    // const num = 15;
+    // console.log(`num` + num % 3); // num0
+
+    // 3.
+    // let first = null == undefined; // true
+    // let second = null === undefined; // false
+    // let result = !(second || first) || (first && second); // false || false
+    // console.log(result); // false
+
+    // 4.
+    // const arr = [5, 30.1, 23.7, 20.2, 15.3, 38.4, 20.9];
+    // const [a, b, ...c] = arr; // a = 5
+    // // ...c.map(x => Math.ceil(x) % a) == [4, 1, 1, 4, 1]
+    // let d = Math.max(...c.map(x => Math.ceil(x) % a));
+    // console.log(d);
+
+    // 5.
+
+    // 6.
+    let food = [];
+    food[1] = {
+        vegetable: "🥦",
+        fruit: "🍓",
+        meat: "🍗"
+    };
+    food[5] = function eat(something) {
+        console.log(`I love ${something}`);
+    };
+    // Elemek száma: 6 (food.length)
+
+</script>
