@@ -22,17 +22,30 @@
     // console.log(d);
 
     // 5.
+    const x = "Hello";
+    var y = "";
+    let i = 0;
+    for (i = 0; i <= 5; i++) {
+        let x = ++i;
+        // console.log(x); // 1 3 5
+        y = `${x}${y}`; // "" => "1" => "31" => "531"
+        // console.log(y);
+        x = y;
+    }
+    console.log(x + y); // "Hello531"
 
     // 6.
-    let food = [];
-    food[1] = {
-        vegetable: "🥦",
-        fruit: "🍓",
-        meat: "🍗"
-    };
-    food[5] = function eat(something) {
-        console.log(`I love ${something}`);
-    };
+    // let food = [];
+    // food[1] = {
+    //     vegetable: "🥦",
+    //     fruit: "🍓",
+    //     meat: "🍗"
+    // };
+    // food[5] = function eat(something) {
+    //     console.log(`I love ${something}`);
+    // };
+    // food[5](food[1].fruit);
     // Elemek száma: 6 (food.length)
+    // console.log(food[4]);
 
 </script>
