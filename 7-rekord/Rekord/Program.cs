@@ -47,14 +47,17 @@ namespace Rekord
             Console.WriteLine();
 
             Ember legmagasabb = Legmagasabb(janos, lajos, bela);
-
+            Console.WriteLine("A legmagasabb: " + legmagasabb.nev);
         }
 
         // Megadja a legmagasabb embert!
         // Több megoldás esetén az elsőt!
         static Ember Legmagasabb(Ember e1, Ember e2, Ember e3)
         {
-            throw new NotImplementedException("");
+            Ember ember = e1;
+            if (e2.magassag > ember.magassag) ember = e2;
+            if (e3.magassag > ember.magassag) ember = e3;
+            return ember;
         }
 
         // A rekord egy érték (value) típus!
