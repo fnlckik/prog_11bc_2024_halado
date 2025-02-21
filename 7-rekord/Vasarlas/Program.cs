@@ -23,6 +23,13 @@ namespace Vasarlas
 
             // Mennyit fizettünk a boltban? (összegzés)
             Console.WriteLine("Teljes ár: " + Osszeg2(termekek));
+
+            // Mindegyiket "klasszikus módon" (for, while) és foreach ciklussal is!
+            // Melyik a legdrágább termék?
+
+            // Adj meg egy olyan terméket, aminek az ára 3000 Ft feletti!
+
+            // Válogasd ki egy listába az élelmiszereket!
         }
 
         static int Osszeg2(List<Termek> termekek)
