@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Epitmenyado
 {
@@ -15,6 +16,12 @@ namespace Epitmenyado
             public int terulet;
         }
 
+        struct Statisztika
+        {
+            public int darab; // Hány telek esik ide?
+            public int osszeg; // Mennyi az ilyen telkek adója?
+        }
+
         static void Main(string[] args)
         {
             List<Epulet> epuletek = new List<Epulet>();
@@ -22,7 +29,109 @@ namespace Epitmenyado
             Beolvas(epuletek, adok);
             F2(epuletek);
             //F3(epuletek);
-            Console.WriteLine(Ado('C', 180, adok));
+            //Console.WriteLine(Ado('C', 180, adok));
+            F5Struct(epuletek, adok);
+        }
+
+        static void F5Struct(List<Epulet> epuletek, Dictionary<char, int> adok)
+        {
+            Dictionary<char, Statisztika> stat = new Dictionary<char, Statisztika>
+            {
+                { 'A', new Statisztika { darab = 0, osszeg = 0 } },
+                { 'B', new Statisztika { darab = 0, osszeg = 0 } },
+                { 'C', new Statisztika { darab = 0, osszeg = 0 } }
+            };
+            foreach (Epulet epulet in epuletek)
+            {
+                Console.WriteLine(epulet.tipus + " " + stat[epulet.tipus].darab);
+                stat[epulet.tipus].darab++; // Hogyan lehetne javítani? (Microsoft Docs)
+            }
+        }
+
+        static void F5Magic(List<Epulet> epuletek, Dictionary<char, int> adok)
+        {
+            Dictionary<char, Dictionary<string, int>> epitmenySavok =
+            new Dictionary<char, Dictionary<string, int>>();
+
+            Dictionary<string, int> defaultDict = new Dictionary<string, int>();
+            Dictionary<string, int> defaultDictB = new Dictionary<string, int>();
+            Dictionary<string, int> defaultDictC = new Dictionary<string, int>();
+
+            defaultDict.Add("szum", 0);
+            defaultDict.Add("count", 0);
+            defaultDictB.Add("szum", 0);
+            defaultDictB.Add("count", 0);
+            defaultDictC.Add("szum", 0);
+            defaultDictC.Add("count", 0);
+
+            epitmenySavok.Add('A', defaultDict);
+            epitmenySavok.Add('B', defaultDictB);
+            epitmenySavok.Add('C', defaultDictC);
+
+            foreach (Epulet item in epuletek)
+            {
+                epitmenySavok[item.tipus]["szum"] += Ado(item.tipus, item.terulet, adok);
+                epitmenySavok[item.tipus]["count"]++;
+            }
+
+            foreach (char key in epitmenySavok.Keys)
+            {
+                Console.WriteLine($"{key} sávba {epitmenySavok[key]["count"]} telek esik, az adó {epitmenySavok[key]["szum"]} Ft.");
+            }
+        }
+
+        static void F5(List<Epulet> epuletek, Dictionary<char, int> adok)
+        {
+            Console.WriteLine("5. feladat");
+            Dictionary<char, int> mennyisegek = new Dictionary<char, int>
+            {
+                { 'A', 0 },
+                { 'B', 0 },
+                { 'C', 0 }
+            };
+            Dictionary<char, int> osszegek = new Dictionary<char, int>
+            {
+                { 'A', 0 },
+                { 'B', 0 },
+                { 'C', 0 }
+            };
+            foreach (Epulet epulet in epuletek)
+            {
+                mennyisegek[epulet.tipus]++;
+                osszegek[epulet.tipus] += Ado(epulet.tipus, epulet.terulet, adok);
+            }
+            foreach (char tipus in mennyisegek.Keys)
+            {
+                Console.WriteLine($"{tipus} sávba {mennyisegek[tipus]} telek esik, az adó {osszegek[tipus]} Ft.");
+            }
+        }
+
+        static void F5Hatvaltozo(List<Epulet> epuletek, Dictionary<char, int> adok)
+        {
+            Console.WriteLine("5. feladat");
+            int dbA = 0, dbB = 0, dbC = 0; // megszámolás
+            int adoA = 0, adoB = 0, adoC = 0; // összegzés
+            foreach (Epulet epulet in epuletek)
+            {
+                if (epulet.tipus == 'A')
+                {
+                    dbA++;
+                    adoA += Ado(epulet.tipus, epulet.terulet, adok);
+                }
+                else if (epulet.tipus == 'B')
+                {
+                    dbB++;
+                    adoB += Ado(epulet.tipus, epulet.terulet, adok);
+                }
+                else
+                {
+                    dbC++;
+                    adoC += Ado(epulet.tipus, epulet.terulet, adok);
+                }
+            }
+            Console.WriteLine($"A sávba { dbA } telek esik, az adó { adoA } Ft.");
+            Console.WriteLine($"B sávba { dbB } telek esik, az adó { adoB } Ft.");
+            Console.WriteLine($"C sávba { dbC } telek esik, az adó { adoC } Ft.");
         }
 
         // 'C', 180 + Dictionary
