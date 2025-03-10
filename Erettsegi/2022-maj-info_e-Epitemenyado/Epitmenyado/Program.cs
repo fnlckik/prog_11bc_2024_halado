@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Epitmenyado
 {
@@ -30,7 +29,28 @@ namespace Epitmenyado
             F2(epuletek);
             //F3(epuletek);
             //Console.WriteLine(Ado('C', 180, adok));
-            F5Struct(epuletek, adok);
+            F5(epuletek, adok);
+            //F5Struct(epuletek, adok);
+            F6(epuletek);
+        }
+
+        static void F6(List<Epulet> epuletek)
+        {
+            HashSet<string> utcak = new HashSet<string>();
+            for (int i = 0; i < epuletek.Count - 1; i++)
+            {
+                Epulet e1 = epuletek[i];
+                Epulet e2 = epuletek[i + 1];
+                if (e1.utca == e2.utca && e1.tipus != e2.tipus)
+                {
+                    utcak.Add(e1.utca);
+                }
+            }
+            Console.WriteLine("6. feladat. A több sávba sorolt utcák:");
+            foreach (string utca in utcak)
+            {
+                Console.WriteLine(utca);
+            }
         }
 
         static void F5Struct(List<Epulet> epuletek, Dictionary<char, int> adok)
@@ -41,10 +61,19 @@ namespace Epitmenyado
                 { 'B', new Statisztika { darab = 0, osszeg = 0 } },
                 { 'C', new Statisztika { darab = 0, osszeg = 0 } }
             };
+            Console.WriteLine("5. feladat");
             foreach (Epulet epulet in epuletek)
             {
-                Console.WriteLine(epulet.tipus + " " + stat[epulet.tipus].darab);
-                stat[epulet.tipus].darab++; // Hogyan lehetne javítani? (Microsoft Docs)
+                //Console.WriteLine(epulet.tipus + " " + stat[epulet.tipus].darab);
+                Statisztika aktualis = stat[epulet.tipus];
+                aktualis.darab++;
+                aktualis.osszeg += Ado(epulet.tipus, epulet.terulet, adok);
+                stat[epulet.tipus] = aktualis;
+                //stat[epulet.tipus].darab++; // Hogyan lehetne javítani? (Microsoft Docs)
+            }
+            foreach (char tipus in stat.Keys)
+            {
+                Console.WriteLine($"{tipus} sávba {stat[tipus].darab} telek esik, az adó {stat[tipus].osszeg} Ft.");
             }
         }
 
