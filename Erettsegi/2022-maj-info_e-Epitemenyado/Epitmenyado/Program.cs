@@ -32,6 +32,29 @@ namespace Epitmenyado
             F5(epuletek, adok);
             //F5Struct(epuletek, adok);
             F6(epuletek);
+            F7(epuletek, adok);
+        }
+
+        static void F7(List<Epulet> epuletek, Dictionary<char, int> adok)
+        {
+            Dictionary<string, int> fizetendok = new Dictionary<string, int>();
+            foreach (Epulet epulet in epuletek)
+            {
+                if (!fizetendok.ContainsKey(epulet.adoszam))
+                {
+                    fizetendok.Add(epulet.adoszam, Ado(epulet.tipus, epulet.terulet, adok));
+                }
+                else
+                {
+                    fizetendok[epulet.adoszam] += Ado(epulet.tipus, epulet.terulet, adok);
+                }
+            }
+            StreamWriter sw = new StreamWriter("fizetendo.txt");
+            foreach (string adoszam in fizetendok.Keys)
+            {
+                sw.WriteLine($"{adoszam} {fizetendok[adoszam]}");
+            }
+            sw.Close();
         }
 
         static void F6(List<Epulet> epuletek)
