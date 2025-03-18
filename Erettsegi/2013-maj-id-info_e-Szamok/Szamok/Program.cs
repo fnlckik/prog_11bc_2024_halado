@@ -20,6 +20,20 @@ namespace Szamok
             Beolvas(feladatok);
             F2(feladatok);
             F3(feladatok);
+            F4(feladatok);
+        }
+
+        static void F4(List<Feladat> feladatok)
+        {
+            Console.WriteLine("4. feladat");
+            int mine = feladatok[0].valasz;
+            int maxe = feladatok[0].valasz;
+            foreach (Feladat f in feladatok)
+            {
+                if (f.valasz > maxe) maxe = f.valasz;
+                if (f.valasz < mine) mine = f.valasz;
+            }
+            Console.WriteLine($"A válaszok {mine}-től {maxe}-ig terjednek.");
         }
 
         static void F3(List<Feladat> feladatok)
