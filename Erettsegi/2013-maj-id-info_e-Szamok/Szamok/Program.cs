@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Szamok
 {
@@ -21,6 +22,21 @@ namespace Szamok
             F2(feladatok);
             F3(feladatok);
             F4(feladatok);
+            F5(feladatok);
+        }
+
+        static void F5(List<Feladat> feladatok)
+        {
+            HashSet<string> temakorok = new HashSet<string>();
+            foreach (Feladat f in feladatok)
+            {
+                temakorok.Add(f.temakor);
+            }
+            Console.WriteLine("5. feladat");
+            foreach (string temakor in temakorok)
+            {
+                Console.WriteLine(temakor);
+            }
         }
 
         static void F4(List<Feladat> feladatok)
