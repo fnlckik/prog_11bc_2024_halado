@@ -23,6 +23,38 @@ namespace Szamok
             F3(feladatok);
             F4(feladatok);
             F5(feladatok);
+            F6(feladatok);
+        }
+
+        static void F6(List<Feladat> feladatok)
+        {
+            // Kiválogatjuk az adott témakörbe tartozó feladatokat.
+            List<Feladat> valogatottak = new List<Feladat>();
+
+            Console.Write("Milyen temakorbol szeretne kerdest kapni? ");
+            string temakor = Console.ReadLine();
+            foreach (Feladat f in feladatok)
+            {
+                if (f.temakor == temakor)
+                {
+                    valogatottak.Add(f);
+                }
+            }
+            Random r = new Random();
+            Feladat kivalasztott = valogatottak[r.Next(valogatottak.Count)];
+
+            Console.Write(kivalasztott.kerdes + " ");
+            int valasz = int.Parse(Console.ReadLine());
+
+            if (kivalasztott.valasz == valasz)
+            {
+                Console.WriteLine($"A valasz {kivalasztott.pontszam} pontot er.");
+            }
+            else
+            {
+                Console.WriteLine("A valasz 0 pontot er.");
+                Console.WriteLine($"A helyes valasz: {kivalasztott.valasz}");
+            }
         }
 
         static void F5(List<Feladat> feladatok)
