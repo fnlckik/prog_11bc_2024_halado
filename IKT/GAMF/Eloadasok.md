@@ -10,5 +10,5 @@
 ---
 
 *FNL:*
-- 3. forduló 3. feladat
-- 1. forduló 3. feladat
+- 3\. forduló 3. feladat
+- 1\. forduló 3. feladat
