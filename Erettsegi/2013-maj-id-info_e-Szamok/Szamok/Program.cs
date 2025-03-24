@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -23,7 +24,65 @@ namespace Szamok
             F3(feladatok);
             F4(feladatok);
             F5(feladatok);
-            F6(feladatok);
+            //F6(feladatok);
+            //F7Ricsi(feladatok);
+            //F7Balazs(feladatok);
+            F7(feladatok);
+        }
+
+        static void F7(List<Feladat> feladatok)
+        {
+            Random r = new Random();
+            StreamWriter sw = new StreamWriter("tesztfel3.txt");
+            int pont = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                int k = r.Next(i, feladatok.Count);
+                (feladatok[i], feladatok[k]) = (feladatok[k], feladatok[i]);
+                Feladat f = feladatok[i];
+                sw.WriteLine($"{f.pontszam} {f.valasz} {f.kerdes}");
+                pont += f.pontszam;
+            }
+            sw.WriteLine($"A feladatsorra osszesen {pont} pont adhato.");
+            sw.Close();
+        }
+
+        static void F7Balazs(List<Feladat> feladatok)
+        {
+            List<Feladat> masolat = new List<Feladat>(feladatok);
+            StreamWriter sw = new StreamWriter("tesztfel2.txt");
+            Random r = new Random();
+            int pont = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                int k = r.Next(masolat.Count);
+                Feladat f = masolat[k];
+                masolat.RemoveAt(k);
+                sw.WriteLine($"{f.pontszam} {f.valasz} {f.kerdes}");
+                pont += f.pontszam;
+            }
+            sw.WriteLine($"A feladatsorra osszesen {pont} pont adhato.");
+            sw.Close();
+        }
+
+        static void F7Ricsi(List<Feladat> feladatok)
+        {
+            StreamWriter w = new StreamWriter("tesztfel.txt");
+            HashSet<int> seged = new HashSet<int>();
+            Random r = new Random();
+            int pontok = 0;
+            while (seged.Count < 10)
+            {
+                int szam = r.Next(feladatok.Count);
+                if (!seged.Contains(szam))
+                {
+                    pontok += feladatok[szam].pontszam;
+                    w.WriteLine($"{feladatok[szam].pontszam} {feladatok[szam].valasz} {feladatok[szam].kerdes}");
+                    seged.Add(szam);
+                }
+            }
+            w.WriteLine($"A feladatsorra osszesen {pontok} pont adhato.");
+            w.Close();
         }
 
         static void F6(List<Feladat> feladatok)
