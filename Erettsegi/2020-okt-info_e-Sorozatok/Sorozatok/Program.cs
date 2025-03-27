@@ -34,7 +34,54 @@ namespace Sorozatok
 
             Beolvas(sorozatok);
             //Kiir(sorozatok);
+            F2(sorozatok);
+            F3(sorozatok);
+            F4(sorozatok);
+        }
 
+        static void F4(List<Sorozat> sorozatok)
+        {
+            int s = 0; // percben az összes idő
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                if (sorozat.lattaE)
+                {
+                    s += sorozat.hossz;
+                }
+            }
+            Console.WriteLine("4. feladat");
+            int nap = s / (60 * 24);
+            Console.WriteLine($"Sorozatnézéssel {nap} napot ?? órát és ?? percet töltött.");
+        }
+
+        static void F3(List<Sorozat> sorozatok)
+        {
+            int db = 0;
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                if (sorozat.lattaE)
+                {
+                    db++;
+                }
+            }
+            double sz = (double)db / sorozatok.Count * 100;
+            Console.WriteLine("3. feladat");
+            Console.WriteLine($"A listában lévő epizódok {sz:0.00}%-át látta.");
+        }
+
+        static void F2(List<Sorozat> sorozatok)
+        {
+            Console.WriteLine("2. feladat");
+            int db = 0;
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                //if (sorozat.datum != "NI")
+                if (sorozat.date != null)
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"A listában {db} db vetítési dátummal rendelkező epizód van.");
         }
 
         static void Kiir(List<Sorozat> sorozatok)
