@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Remoting.Messaging;
 
 namespace Sorozatok
 {
@@ -37,6 +38,41 @@ namespace Sorozatok
             F2(sorozatok);
             F3(sorozatok);
             F4(sorozatok);
+            //F5(sorozatok);
+            //Console.WriteLine(Hetnapja(2025, 3, 27));
+            DateTime ma = DateTime.Now;
+            Console.WriteLine(ma.DayOfWeek);
+        }
+
+        static string Hetnapja(int ev, int ho, int nap)
+        {
+            string[] napok = { "v", "h", "k", "sze", "cs", "p", "szo" };
+            int[] honapok = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
+            if (ho < 3) ev--;
+            int evkod = ev + ev / 4 - ev / 100 + ev / 400;
+            string hetnap = napok[(evkod + honapok[ho-1] + nap) % 7];
+            return hetnap;
+        }
+
+        static void F5(List<Sorozat> sorozatok)
+        {
+            Console.WriteLine("5. feladat");
+            Console.Write("Adjon meg egy dátumot! Dátum= ");
+            string sor = Console.ReadLine();
+            //string[] d = sor.Split('.');
+            //DateTime date = new DateTime(int.Parse(d[0]), int.Parse(d[1]), int.Parse(d[2]));
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                //if (sorozat.date <= date && !sorozat.lattaE)
+                //{
+                //    Console.WriteLine($"{sorozat.epizod}\t{sorozat.cim}");
+                //}
+                // sor < sorozat.datum (-1)
+                if (sor.CompareTo(sorozat.datum) != -1 && !sorozat.lattaE)
+                {
+                    Console.WriteLine($"{sorozat.epizod}\t{sorozat.cim}");
+                }
+            }
         }
 
         static void F4(List<Sorozat> sorozatok)
@@ -51,7 +87,10 @@ namespace Sorozatok
             }
             Console.WriteLine("4. feladat");
             int nap = s / (60 * 24);
-            Console.WriteLine($"Sorozatnézéssel {nap} napot ?? órát és ?? percet töltött.");
+            int maradek = s % (60 * 24);
+            int ora = maradek / 60;
+            int perc = maradek % 60;
+            Console.WriteLine($"Sorozatnézéssel {nap} napot {ora} órát és {perc} percet töltött.");
         }
 
         static void F3(List<Sorozat> sorozatok)
