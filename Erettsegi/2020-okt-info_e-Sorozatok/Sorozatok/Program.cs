@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
 
 namespace Sorozatok
 {
@@ -40,8 +39,94 @@ namespace Sorozatok
             F4(sorozatok);
             //F5(sorozatok);
             //Console.WriteLine(Hetnapja(2025, 3, 27));
-            DateTime ma = DateTime.Now;
-            Console.WriteLine(ma.DayOfWeek);
+            //DateTime ma = DateTime.Now;
+            //Console.WriteLine(ma.DayOfWeek);
+            //F7(sorozatok);
+            //F8(sorozatok);
+            F8Dic(sorozatok);
+        }
+
+        static void F8Dic(List<Sorozat> sorozatok)
+        {
+            Dictionary<string, int> idok = new Dictionary<string, int>();
+            Dictionary<string, int> darabok = new Dictionary<string, int>();
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                string cim = sorozat.cim;
+                if (idok.ContainsKey(cim))
+                {
+                    idok[cim] += sorozat.hossz;
+                    darabok[cim]++;
+                }
+                else
+                {
+                    idok.Add(cim, sorozat.hossz);
+                    darabok.Add(cim, 1);
+                }
+            }
+
+            StreamWriter sw = new StreamWriter("summaDic.txt");
+            foreach (string cim in idok.Keys)
+            {
+                sw.WriteLine($"{cim} {idok[cim]} {darabok[cim]}");
+            }
+            sw.Close();
+        }
+
+        static void F8(List<Sorozat> sorozatok)
+        {
+            StreamWriter sw = new StreamWriter("summa.txt");
+            int osszeg = 0;
+            int db = 0;
+            string cim = sorozatok[0].cim; // aktuális sorozat címe
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                if (sorozat.cim != cim)
+                {
+                    // Új sorozat következik
+                    sw.WriteLine($"{cim} {osszeg} {db}");
+                    osszeg = 0;
+                    db = 0;
+                    cim = sorozat.cim;
+                    //sw.Flush();
+                }
+                osszeg += sorozat.hossz;
+                db++;
+            }
+            sw.WriteLine($"{cim} {osszeg} {db}");
+            sw.Close();
+        }
+
+        static void F7(List<Sorozat> sorozatok)
+        {
+            Console.WriteLine("\n7. feladat");
+            Console.Write("Adja meg a hét egy napját (például cs)! Nap= ");
+            string nap = Console.ReadLine();
+
+            HashSet<string> cimek = new HashSet<string>();
+            foreach (Sorozat sorozat in sorozatok)
+            {
+                if (sorozat.date != null)
+                {
+                    DateTime d = Convert.ToDateTime(sorozat.date);
+                    if (Hetnapja(d.Year, d.Month, d.Day) == nap)
+                    {
+                        cimek.Add(sorozat.cim);
+                    }
+                }
+            }
+
+            if (cimek.Count == 0)
+            {
+                Console.WriteLine("Az adott napon nem kerül adásba sorozat.");
+            }
+            else
+            {
+                foreach (string cim in cimek)
+                {
+                    Console.WriteLine(cim);
+                }
+            }
         }
 
         static string Hetnapja(int ev, int ho, int nap)
@@ -56,7 +141,7 @@ namespace Sorozatok
 
         static void F5(List<Sorozat> sorozatok)
         {
-            Console.WriteLine("5. feladat");
+            Console.WriteLine("\n5. feladat");
             Console.Write("Adjon meg egy dátumot! Dátum= ");
             string sor = Console.ReadLine();
             //string[] d = sor.Split('.');
@@ -85,7 +170,7 @@ namespace Sorozatok
                     s += sorozat.hossz;
                 }
             }
-            Console.WriteLine("4. feladat");
+            Console.WriteLine("\n4. feladat");
             int nap = s / (60 * 24);
             int maradek = s % (60 * 24);
             int ora = maradek / 60;
@@ -104,13 +189,13 @@ namespace Sorozatok
                 }
             }
             double sz = (double)db / sorozatok.Count * 100;
-            Console.WriteLine("3. feladat");
+            Console.WriteLine("\n3. feladat");
             Console.WriteLine($"A listában lévő epizódok {sz:0.00}%-át látta.");
         }
 
         static void F2(List<Sorozat> sorozatok)
         {
-            Console.WriteLine("2. feladat");
+            Console.WriteLine("\n2. feladat");
             int db = 0;
             foreach (Sorozat sorozat in sorozatok)
             {
