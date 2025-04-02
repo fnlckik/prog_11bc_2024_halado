@@ -28,8 +28,52 @@ namespace Jelek
             //Console.WriteLine(diff.Hours * 3600 + diff.Minutes * 60 + diff.Seconds);
             //Console.WriteLine(diff.TotalSeconds);
 
-            Console.WriteLine(Eltelt(t2, t1));
-            Console.WriteLine(Eltelt(12, 14, 20, 13, 17, 5));
+            //Console.WriteLine(Eltelt(t2, t1));
+            //Console.WriteLine(Eltelt(12, 14, 20, 13, 17, 5));
+            F4(jelek);
+            //F4Regi(jelek);
+
+            F5(jelek);
+            F6(jelek);
+        }
+
+        static void F6(List<Jel> jelek)
+        {
+            double osszeg = 0;
+            for (int i = 1; i < jelek.Count; i++)
+            {
+                double x = Math.Pow(jelek[i].x - jelek[i - 1].x, 2);
+                double y = Math.Pow(jelek[i].y - jelek[i - 1].y, 2);
+                double d = Math.Sqrt(x + y);
+                osszeg += d;
+            }
+            Console.WriteLine("\n6. feladat");
+            Console.WriteLine($"Elmozdulás: {osszeg:0.000} egység");
+        }
+
+        static void F5(List<Jel> jelek)
+        {
+            // Kéne: minX, minY, maxX, maxY
+        }
+
+        static void F4Regi(List<Jel> jelek)
+        {
+            Console.WriteLine("\n4. feladat");
+            Jel elso = jelek[0];
+            Jel utso = jelek[jelek.Count - 1];
+            int eltelt = Eltelt(elso.ora, elso.perc, elso.mp, utso.ora, utso.perc, utso.mp);
+            int ora = eltelt / 3600;
+            int perc = eltelt % 3600 / 60;
+            int mp = eltelt % 60;
+            Console.WriteLine($"Időtartam: {ora:00}:{perc:00}:{mp:00}");
+        }
+
+        static void F4(List<Jel> jelek)
+        {
+            Console.WriteLine("\n4. feladat");
+            int eltelt = Eltelt(jelek[0].ido, jelek[jelek.Count - 1].ido);
+            TimeSpan ido = new TimeSpan(0, 0, eltelt);
+            Console.WriteLine($"Időtartam: {ido}");
         }
 
         // Function overloading (függvény túlterhelés)
