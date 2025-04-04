@@ -35,6 +35,42 @@ namespace Jelek
 
             F5(jelek);
             F6(jelek);
+            F7(jelek);
+        }
+
+        static void F7(List<Jel> jelek)
+        {
+            StreamWriter sw = new StreamWriter("kimaradt.txt");
+            for (int i = 0; i < jelek.Count - 1; i++)
+            {
+                int idoelteres = Eltelt(jelek[i].ido, jelek[i + 1].ido);
+                int idoDarab = (int)Math.Ceiling((double)idoelteres / (5 * 60) - 1);
+                //int idoDb = (idoelteres - 1) / (5 * 60);
+
+                int xElteres = Math.Abs(jelek[i].x - jelek[i + 1].x);
+                int xDarab = (int)Math.Ceiling((double)xElteres / 10 - 1);
+
+                int yElteres = Math.Abs(jelek[i].y - jelek[i + 1].y);
+                int yDarab = (int)Math.Ceiling((double)yElteres / 10 - 1);
+
+                int helyDarab = xDarab > yDarab ? xDarab : yDarab;
+                //int helyDarab = Math.Max(xDarab, yDarab);
+
+                TimeSpan ido = jelek[i + 1].ido;
+
+                if (idoDarab != 0 || helyDarab != 0)
+                {
+                    if (idoDarab > helyDarab)
+                    {
+                        sw.WriteLine($"{ido.Hours} {ido.Minutes} {ido.Seconds} időeltérés {idoDarab}");
+                    }
+                    else
+                    {
+                        sw.WriteLine($"{ido.Hours} {ido.Minutes} {ido.Seconds} koordináta-eltérés {helyDarab}");
+                    }
+                }
+            }
+            sw.Close();
         }
 
         static void F6(List<Jel> jelek)
