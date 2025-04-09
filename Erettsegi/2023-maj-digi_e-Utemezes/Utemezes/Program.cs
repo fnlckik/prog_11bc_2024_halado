@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
 
 namespace Utemezes
 {
@@ -24,7 +21,56 @@ namespace Utemezes
             F2(taborok);
             F3(taborok);
             F4(taborok);
+
+            // TDD - Test Driven Development
+            //Console.WriteLine(Sorszam(6, 16)); // 1
+            //Console.WriteLine(Sorszam(6, 27)); // 27 - 16 + 1 = 12
+            //Console.WriteLine(Sorszam(7, 3)); // 15 (jún) + 3 = 18
+            //Console.WriteLine(Sorszam(8, 10)); // 15 (jún) + 31 (júl) + 10 = 56
+            //Console.WriteLine(Sorszam(8, 31)); // 15 (jún) + 31 (júl) + 31 = 77
+
+            F6(taborok);
         }
+
+        static void F6(List<Tabor> taborok)
+        {
+            Console.WriteLine("\n6. feladat");
+            Console.Write("hó: ");
+            int ho = int.Parse(Console.ReadLine());
+            Console.Write("nap: ");
+            int nap = int.Parse(Console.ReadLine());
+
+            int akt = Sorszam(ho, nap);
+
+            int db = 0;
+            foreach (Tabor tabor in taborok)
+            {
+                int k = Sorszam(tabor.kezdet.Month, tabor.kezdet.Day);
+                int v = Sorszam(tabor.veg.Month, tabor.kezdet.Day);
+                if (k <= akt && akt <= v)
+                {
+                    db++;
+                }
+            }
+            Console.WriteLine($"Ekkor éppen {db} tábor tart.");
+        }
+
+        static int Sorszam(int honap, int nap)
+        {
+            int ev = DateTime.Now.Year;
+            DateTime start = new DateTime(ev, 06, 16);
+            DateTime aktualis = new DateTime(ev, honap, nap);
+            int kulonbseg = (aktualis - start).Days;
+            return kulonbseg+1;
+        }
+
+        //static int Sorszam(int honap, int nap)
+        //{
+        //    // 1. nap: 06. 16.
+        //    if (honap == 6) return nap - 16 + 1;
+        //    else if (honap == 7) return 15 + nap;
+        //    else return 15 + 31 + nap;
+        //}
 
         static void F4(List<Tabor> taborok)
         {
@@ -44,7 +90,7 @@ namespace Utemezes
                 }
             }
 
-            Console.WriteLine("4. feladat");
+            Console.WriteLine("\n4. feladat");
             Console.WriteLine("Legnépszerűbbek:");
             foreach (Tabor t in nepszeruek)
             {
@@ -54,7 +100,7 @@ namespace Utemezes
 
         static void F3(List<Tabor> taborok)
         {
-            Console.WriteLine("3. feladat");
+            Console.WriteLine("\n3. feladat");
             bool voltZenei = false;
             foreach (Tabor tabor in taborok)
             {
