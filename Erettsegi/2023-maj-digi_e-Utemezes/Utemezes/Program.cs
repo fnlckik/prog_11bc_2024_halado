@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Utemezes
 {
@@ -29,7 +30,83 @@ namespace Utemezes
             //Console.WriteLine(Sorszam(8, 10)); // 15 (jún) + 31 (júl) + 10 = 56
             //Console.WriteLine(Sorszam(8, 31)); // 15 (jún) + 31 (júl) + 31 = 77
 
-            F6(taborok);
+            //F6(taborok);
+            //F6DateTime(taborok);
+            F7(taborok);
+        }
+
+        static List<Tabor> KivalogatErdekesek(List<Tabor> taborok, string betu)
+        {
+            List<Tabor> erdekesek = new List<Tabor>();
+            foreach (Tabor tabor in taborok)
+            {
+                if (tabor.diakok.Contains(betu))
+                {
+                    erdekesek.Add(tabor);
+                }
+            }
+            return erdekesek;
+        }
+
+        static void KiirFajlba(List<Tabor> erdekesek)
+        {
+            StreamWriter sw = new StreamWriter("egytanulo.txt");
+            foreach (Tabor t in erdekesek)
+            {
+                sw.WriteLine($"{t.kezdet:M.d} - {t.veg:M.d}. {t.tema}");
+            }
+            sw.Close();
+        }
+
+        static void F7(List<Tabor> taborok)
+        {
+            Console.WriteLine("\n7. feladat");
+            Console.Write("Adja meg egy tanuló betűjelét: ");
+            string betu = Console.ReadLine();
+
+            List<Tabor> erdekesek = KivalogatErdekesek(taborok, betu);
+
+            //DateTime ido;
+            //bool siker = DateTime.TryParse("kecske", out ido);
+            //Console.WriteLine(siker + " " + ido);
+
+            Rendez(erdekesek);
+            KiirFajlba(erdekesek);
+        }
+
+        static void Rendez(List<Tabor> erdekesek)
+        {
+            for (int i = 0; i < erdekesek.Count; i++)
+            {
+                for (int j = 0; j < erdekesek.Count - i - 1; j++)
+                {
+                    if (erdekesek[j].kezdet > erdekesek[j+1].kezdet)
+                    {
+                        (erdekesek[j], erdekesek[j + 1]) = (erdekesek[j + 1], erdekesek[j]);
+                    }
+                }
+            }
+        }
+
+        static void F6DateTime(List<Tabor> taborok)
+        {
+            Console.WriteLine("\n6. feladat");
+            Console.Write("hó: ");
+            int ho = int.Parse(Console.ReadLine());
+            Console.Write("nap: ");
+            int nap = int.Parse(Console.ReadLine());
+
+            DateTime akt = new DateTime(DateTime.Now.Year, ho, nap);
+            int db = 0;
+            foreach (Tabor tabor in taborok)
+            {
+                if (tabor.kezdet <= akt && akt <= tabor.veg)
+                {
+                    db++;
+                }
+            }
+
+            Console.WriteLine($"Ekkor éppen {db} tábor tart.");
         }
 
         static void F6(List<Tabor> taborok)
