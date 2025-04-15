@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace Jegyek
 {
@@ -20,11 +19,12 @@ namespace Jegyek
 
             // Példányosítás: adott osztályba tartozó objektum létrehozása
             // Konstruktor: az a függvény, ami példányosítás során lefut
-            Diak adel = new Diak();
-            adel.nev = "Adél";
-            adel.kor = 17;
-            adel.hangulat = 0.83;
+            //Diak adel = new Diak();
+            //adel.nev = "Adél";
+            //adel.kor = 17;
+            //adel.hangulat = 0.83;
 
+            Diak adel = new Diak("Adél", 17, 0.83);
             Diak bela = new Diak("Béla", 15, 0.42);
             Diak csaba = new Diak("Csaba", 17, 0.13);
             Console.WriteLine();
@@ -35,6 +35,21 @@ namespace Jegyek
             Console.WriteLine(adel);
             Console.WriteLine(bela);
             Console.WriteLine(csaba);
+            Console.WriteLine();
+
+            // Pihenés
+            // public - bárhonnan elérhető
+            // private - csak az osztályon belül elérhető
+            // adel.hangulat ~ adel.GetHangulat()
+            Console.WriteLine($"Adél hangulata: {adel.GetHangulat()}%"); // 0.83
+            adel.Pihen(3);
+            Console.WriteLine($"Adél hangulata: {adel.GetHangulat()}%"); // 0.83 + 0.15 => 0.98
+            Console.WriteLine();
+
+            // Mi a neved?
+            Console.WriteLine(adel.GetNev());
+            adel.SetNev("Léda");
+            Console.WriteLine(adel.GetNev());
         }
 
         //static string Koszon(Diak d)

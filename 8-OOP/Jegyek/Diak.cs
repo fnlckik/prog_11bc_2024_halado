@@ -12,10 +12,13 @@ namespace Jegyek
     // 2. Műveletek (method) => metódus
     class Diak
     {
-        public string nev;
-        public int kor;
-        public double hangulat; // 0.00 - 1.00
+        #region 1. Adattagok
+        private string nev;
+        private int kor;
+        private double hangulat; // 0.00 - 1.00
+        #endregion
 
+        #region 2. Konstruktorok
         // function overloading (túlterhelés)
         public Diak() { }
 
@@ -27,7 +30,26 @@ namespace Jegyek
             this.hangulat = hangulat;
             Console.WriteLine("Létrejött a diák!");
         }
+        #endregion
 
+        #region 3. Getter, Setter
+        public double GetHangulat()
+        {
+            return hangulat * 100;
+        }
+
+        public string GetNev()
+        {
+            return nev;
+        }
+
+        public void SetNev(string nev)
+        {
+            this.nev = nev;
+        }
+        #endregion
+
+        #region 4. Metódusok
         public string Koszon()
         {
             return $"{nev} vagyok, {kor} éves.";
@@ -37,5 +59,13 @@ namespace Jegyek
         {
             return $"{nev} vagyok, {kor} éves.";
         }
+
+        public void Pihen(int nap)
+        {
+            if (nap < 0) return;
+            hangulat += nap * 0.05;
+            if (hangulat > 1) hangulat = 1;
+        }
+        #endregion
     }
 }
