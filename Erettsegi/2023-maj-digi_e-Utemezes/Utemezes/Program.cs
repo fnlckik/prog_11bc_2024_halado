@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace Utemezes
 {
@@ -72,6 +71,27 @@ namespace Utemezes
 
             Rendez(erdekesek);
             KiirFajlba(erdekesek);
+            bool mehetE = MehetE(erdekesek);
+            if (mehetE)
+            {
+                Console.WriteLine("Elmehet minden táborba.");
+            }
+            else
+            {
+                Console.WriteLine("Nem mehet el minden táborba.");
+            }
+        }
+
+        static bool MehetE(List<Tabor> erdekesek)
+        {
+            // Nem mehet el, ha van olyan tábor,
+            // amelyik később végződik, minthogy a következő kezdődne.
+            int i = 0;
+            while (i < erdekesek.Count - 1 && !(erdekesek[i].veg > erdekesek[i+1].kezdet))
+            {
+                i++;
+            }
+            return i >= erdekesek.Count - 1;
         }
 
         static void Rendez(List<Tabor> erdekesek)

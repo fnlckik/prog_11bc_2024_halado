@@ -16,6 +16,7 @@ namespace Jegyek
         private string nev;
         private int kor;
         private double hangulat; // 0.00 - 1.00
+        public List<int> jegyek = new List<int>();
         #endregion
 
         #region 2. Konstruktorok
@@ -99,6 +100,16 @@ namespace Jegyek
             if (nap < 0) return;
             hangulat += nap * 0.05;
             if (hangulat > 1) hangulat = 1;
+        }
+
+        public double Atlag()
+        {
+            double s = 0;
+            foreach (int jegy in this.jegyek)
+            {
+                s += jegy;
+            }
+            return s / this.jegyek.Count;
         }
         #endregion
     }

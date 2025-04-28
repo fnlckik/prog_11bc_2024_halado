@@ -54,6 +54,16 @@ namespace Jegyek
             Console.WriteLine();
 
             Console.WriteLine($"{adel.Nev} kora: {adel.Kor}");
+            Console.Clear();
+
+            // Jegyek
+            adel.jegyek.Add(4);
+            adel.jegyek.Add(1);
+            adel.jegyek.Add(3);
+
+            // Gond: 0-val osztás eredménye NaN (Not a Number)
+            Console.WriteLine($"{adel.Nev} átlaga: {adel.Atlag():0.00}");
+            Console.WriteLine($"{bela.Nev} átlaga: {bela.Atlag():0.00}");
         }
 
         //static string Koszon(Diak d)
