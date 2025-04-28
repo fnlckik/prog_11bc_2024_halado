@@ -40,16 +40,20 @@ namespace Jegyek
             // Pihenés
             // public - bárhonnan elérhető
             // private - csak az osztályon belül elérhető
-            // adel.hangulat ~ adel.GetHangulat()
-            Console.WriteLine($"Adél hangulata: {adel.GetHangulat()}%"); // 0.83
+            // adel.hangulat ~ adel.GetHangulat() ~ adel.Hangulat
+            Console.WriteLine($"Adél hangulata: {adel.Hangulat}%"); // 0.83
             adel.Pihen(3);
-            Console.WriteLine($"Adél hangulata: {adel.GetHangulat()}%"); // 0.83 + 0.15 => 0.98
+            Console.WriteLine($"Adél hangulata: {adel.Hangulat}%"); // 0.83 + 0.15 => 0.98
             Console.WriteLine();
 
             // Mi a neved?
-            Console.WriteLine(adel.GetNev());
-            adel.SetNev("Léda");
-            Console.WriteLine(adel.GetNev());
+            Console.WriteLine("Régi név: " + adel.Nev);
+            adel.Nev = "Léda";
+            adel.Nev = "Vonatkerékpumpáló József";
+            Console.WriteLine("Új név: " + adel.Nev);
+            Console.WriteLine();
+
+            Console.WriteLine($"{adel.Nev} kora: {adel.Kor}");
         }
 
         //static string Koszon(Diak d)

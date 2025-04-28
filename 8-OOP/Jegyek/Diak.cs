@@ -33,20 +33,54 @@ namespace Jegyek
         #endregion
 
         #region 3. Getter, Setter
-        public double GetHangulat()
+        //public double GetHangulat()
+        //{
+        //    return hangulat * 100;
+        //}
+
+        //public string GetNev()
+        //{
+        //    return nev;
+        //}
+
+        //public void SetNev(string nev)
+        //{
+        //    if (nev.Length <= 20)
+        //    {
+        //        this.nev = nev;
+        //    }
+        //}
+
+        //public int GetKor()
+        //{
+        //    return kor;
+        //}
+        #endregion
+
+        #region 3. Getter, Setter (2015 .NET 6.0) - property
+        //public double Hangulat
+        //{
+        //    get
+        //    {
+        //        return hangulat * 100;
+        //    }
+        //}
+
+        public double Hangulat { get => hangulat * 100; }
+
+        public string Nev
         {
-            return hangulat * 100;
+            get => nev;
+            set
+            {
+                if (value.Length <= 20)
+                {
+                    nev = value;
+                }
+            }
         }
 
-        public string GetNev()
-        {
-            return nev;
-        }
-
-        public void SetNev(string nev)
-        {
-            this.nev = nev;
-        }
+        public int Kor { get => kor; }
         #endregion
 
         #region 4. Metódusok
