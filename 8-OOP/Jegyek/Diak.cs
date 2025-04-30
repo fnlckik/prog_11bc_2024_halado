@@ -16,7 +16,7 @@ namespace Jegyek
         private string nev;
         private int kor;
         private double hangulat; // 0.00 - 1.00
-        public List<int> jegyek = new List<int>();
+        private List<int> jegyek = new List<int>();
         #endregion
 
         #region 2. Konstruktorok
@@ -82,6 +82,10 @@ namespace Jegyek
         }
 
         public int Kor { get => kor; }
+
+        // Vigyázat! Listák getter függvénye mindig másolatot adjon!
+        // (Elv: referencia típusú adatoknál másolatot adunk!)
+        public List<int> Jegyek { get => new List<int>(this.jegyek); }
         #endregion
 
         #region 4. Metódusok
@@ -102,14 +106,26 @@ namespace Jegyek
             if (hangulat > 1) hangulat = 1;
         }
 
-        public double Atlag()
+        // Ötlet: adjunk vissza stringet
+        public string Atlag()
         {
+            if (this.jegyek.Count == 0) return "Nincs még jegye.";
             double s = 0;
             foreach (int jegy in this.jegyek)
             {
                 s += jegy;
             }
-            return s / this.jegyek.Count;
+            //double atlag = Math.Round(s / this.jegyek.Count, 2);
+            //return atlag.ToString();
+            return $"{s / this.jegyek.Count:0.00}";
+        }
+
+        // False értéket ad ha nem sikerült, True ha igen
+        public bool JegyetKap(int jegy)
+        {
+            if (jegy < 1 || jegy > 5) return false;
+            this.jegyek.Add(jegy);
+            return true;
         }
         #endregion
     }

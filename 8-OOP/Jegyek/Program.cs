@@ -57,13 +57,27 @@ namespace Jegyek
             Console.Clear();
 
             // Jegyek
-            adel.jegyek.Add(4);
-            adel.jegyek.Add(1);
-            adel.jegyek.Add(3);
+            Console.WriteLine(adel.JegyetKap(4));
+            Console.WriteLine(adel.JegyetKap(1));
+            Console.WriteLine(adel.JegyetKap(3));
+            Console.WriteLine(adel.JegyetKap(100));
+            Console.WriteLine(adel.JegyetKap(-5));
 
             // Gond: 0-val osztás eredménye NaN (Not a Number)
-            Console.WriteLine($"{adel.Nev} átlaga: {adel.Atlag():0.00}");
-            Console.WriteLine($"{bela.Nev} átlaga: {bela.Atlag():0.00}");
+            // NaN => "Nincs még jegye."
+            // !NaN => az átlagot adja 2 tizedesre kerekítve
+            Console.WriteLine($"{adel.Nev} átlaga: {adel.Atlag()}");
+            Console.WriteLine($"{bela.Nev} átlaga: {bela.Atlag()}");
+            Console.WriteLine($"{csaba.Nev} átlaga: {csaba.Atlag()}");
+            Console.WriteLine();
+
+            // Jegyek száma
+            adel.Jegyek[0] = 404;
+            Console.WriteLine($"{adel.Nev} jegyeinek száma: {adel.Jegyek.Count}");
+            if (adel.Jegyek.Count > 0)
+            {
+                Console.WriteLine($"{adel.Nev} első jegye: {adel.Jegyek[0]}");
+            }
         }
 
         //static string Koszon(Diak d)
