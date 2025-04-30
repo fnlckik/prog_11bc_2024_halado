@@ -29,7 +29,7 @@ namespace Jegyek
             this.nev = nev;
             this.kor = kor;
             this.hangulat = hangulat;
-            Console.WriteLine("Létrejött a diák!");
+            //Console.WriteLine("Létrejött a diák!");
         }
         #endregion
 

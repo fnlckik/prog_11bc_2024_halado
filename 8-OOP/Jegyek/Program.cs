@@ -78,6 +78,11 @@ namespace Jegyek
             {
                 Console.WriteLine($"{adel.Nev} első jegye: {adel.Jegyek[0]}");
             }
+            Console.Clear();
+
+            // Csoport
+            Csoport cs1 = new Csoport(16);
+            Console.WriteLine(cs1);
         }
 
         //static string Koszon(Diak d)
