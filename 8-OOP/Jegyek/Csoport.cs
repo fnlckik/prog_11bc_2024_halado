@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Jegyek
 {
@@ -12,6 +13,8 @@ namespace Jegyek
         public Csoport(int n)
         {
             Random r = new Random();
+            //List<string> nevek = Beolvas("nevek.txt");
+            List<string> nevek = new List<string>(File.ReadAllLines("nevek.txt"));
             for (int i = 0; i < n; i++)
             {
                 int kor = r.Next(14, 20);
@@ -19,6 +22,18 @@ namespace Jegyek
                 Diak d = new Diak("Johnny", kor, hangulat);
                 diakok.Add(d);
             }
+        }
+
+        private List<string> Beolvas(string path)
+        {
+            List<string> eredmeny = new List<string>();
+            StreamReader sr = new StreamReader(path);
+            while (!sr.EndOfStream)
+            {
+                string nev = sr.ReadLine();
+                eredmeny.Add(nev);
+            }
+            return eredmeny;
         }
 
         // Johhny vagyok, 17 éves. Hangulatom: 53%.
