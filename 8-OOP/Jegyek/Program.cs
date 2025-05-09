@@ -83,6 +83,11 @@ namespace Jegyek
             // Csoport
             Csoport cs1 = new Csoport(16);
             Console.WriteLine(cs1);
+            for (int i = 0; i < 6; i++)
+            {
+                cs1.DolgozatIras();
+            }
+            cs1.KiirNaplo();
         }
 
         //static string Koszon(Diak d)
