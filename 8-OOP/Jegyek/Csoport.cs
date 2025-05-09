@@ -55,11 +55,23 @@ namespace Jegyek
             return s;
         }
 
+        // 30% valószínűséggel elégtelen
+        // <0.3 => 1, különben 2-5
         public void DolgozatIras()
         {
             foreach (Diak diak in this.diakok)
             {
-                diak.JegyetKap(this.r.Next(1, 6));
+                double hianyzas = r.NextDouble(); // 20% valószínűséggel hiányzik valaki
+                if (hianyzas > 0.2)
+                {
+                    double szazalek = r.NextDouble();
+                    int jegy = 1;
+                    if (szazalek >= 0.3)
+                    {
+                        jegy = r.Next(2, 6);
+                    }
+                    diak.JegyetKap(jegy);
+                }
             }
         }
 
@@ -72,9 +84,30 @@ namespace Jegyek
                 {
                     Console.Write(jegy + " ");
                 }
-                Console.WriteLine();
+                int top = Console.CursorTop;
+                Console.SetCursorPosition(25, top);
+                Console.WriteLine(diak.Atlag());
             }
         }
+
+        public void LezarJegyek()
+        {
+            Console.WriteLine();
+            foreach (Diak diak in this.diakok)
+            {
+                Console.Write(diak.Nev + ": ");
+                // Ha nincs 3 jegye vagy 1.8 alatti az átlag, akkor pótvizsga!
+                if (diak.Jegyek.Count < 3 || double.Parse(diak.Atlag()) < 1.8)
+                {
+                    Console.WriteLine("Pótvizsga!");
+                }
+                else
+                {
+                    Console.WriteLine(Math.Round(double.Parse(diak.Atlag())));
+                }
+            }
+        }
+
         #endregion
     }
 }

@@ -88,6 +88,7 @@ namespace Jegyek
                 cs1.DolgozatIras();
             }
             cs1.KiirNaplo();
+            cs1.LezarJegyek();
         }
 
         //static string Koszon(Diak d)
