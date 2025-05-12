@@ -1,0 +1,22 @@
+Film.cs
+
+-cim
+-ev
+-mufaj
+-imdb
+-nezok (Hányan értékelték imdb-n?)
+
++Konstruktor(5 params)
++Konstruktor(string)
+
++Cim(get)
++Ev(get): string: BC és AC (before covid, after covid)
++Mufaj(set): 4 fajta lehet
+	"akcio", "fantasy", "kaland", "horror"
++ToString: "Wonder Woman (2017 BC, fantasy) - 4.58"
++KorabbiE(Film): aktuális film korábbi-e másiknál?
+
+
+Film f1 = new Film("Wonder Woman", 2017, "akcio", 4.4, 30);
+Film f2 = new Film("Vasember", 2008, "akcio", 7.6, 50);
+			
