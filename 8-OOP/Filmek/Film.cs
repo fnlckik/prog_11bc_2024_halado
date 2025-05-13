@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Filmek
 {
@@ -22,10 +21,25 @@ namespace Filmek
             this.nezok = nezok;
         }
 
+        // Konstruktor láncolás
+        //public Film(string s) :
+        //    this(
+        //        s.Split(';')[0],
+        //        int.Parse(s.Split(';')[1]),
+        //        s.Split(';')[2],
+        //        double.Parse(s.Split(';')[3]),
+        //        int.Parse(s.Split(';')[4])
+        //        )
+        //{ }
+
         public Film(string s)
         {
             string[] sor = s.Split(';');
-            new Film(sor[0], int.Parse(sor[1]), sor[2], double.Parse(sor[3]), int.Parse(sor[4]));
+            this.cim = sor[0];
+            this.ev = int.Parse(sor[1]);
+            this.mufaj = sor[2];
+            this.imdb = double.Parse(sor[3]);
+            this.nezok = int.Parse(sor[4]);
         }
 
         public string Cim { get => this.cim; }
