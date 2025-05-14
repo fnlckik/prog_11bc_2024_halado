@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Filmek
 {
@@ -63,15 +64,28 @@ namespace Filmek
             }
         }
 
+        public double Imdb
+        {
+            get => Math.Round(this.imdb, 2);
+        }
+
         public override string ToString()
         {
-            return $"{this.cim} ({this.Ev}, {this.mufaj}) - {this.imdb}";
+            return $"{this.cim} ({this.Ev}, {this.mufaj}) - {this.Imdb}";
         }
 
         // Korábbi-e az aktuális film a paraméterként kapottnál?
         public bool KorabbiE(Film film)
         {
             return this.ev < film.ev;
+        }
+
+        public void Ertekel(int pont)
+        {
+            if (pont < 0 || pont > 10) return;
+            double osszeg = this.imdb * this.nezok;
+            this.nezok++;
+            this.imdb = (osszeg + pont) / this.nezok;
         }
     }
 }

@@ -17,6 +17,9 @@ namespace Filmek
 
             f1.Mufaj = "fantasy";
             f1.Mufaj = "romantikus";
+
+            f1.Ertekel(10);
+            f1.Ertekel(-5);
             //Console.WriteLine(f1.Mufaj);
             Console.WriteLine(f1);
             Console.WriteLine(f2);
