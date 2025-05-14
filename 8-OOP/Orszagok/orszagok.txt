@@ -1,0 +1,47 @@
+Magyarország#9730530#93000
+magyar angol német francia olasz
+
+Kanada#38929902#2040000
+angol francia spanyol mandarin
+
+Brazília#203062512#1880000
+portugál angol spanyol francia
+
+Egyiptom#111859140#404000
+arab angol francia német
+
+Ausztrália#26105947#1690000
+angol francia japán kínai
+
+India#1428627663#3630000
+hindi angol francia német szanszkrit
+
+Japán#123294513#4380000
+japán angol kínai koreai
+
+Dél-afrikai Köztársaság#60414495#399000
+angol afrikaans zulu xhosa francia
+
+Kína#1411750000#17900000
+kínai angol japán orosz
+
+Olaszország#58870762#2200000
+olasz angol francia német spanyol
+
+Mexikó#129875529#1700000
+spanyol angol francia német
+
+Nigéria#223804632#477000
+angol francia hausa joruba igbo
+
+Oroszország#144444359#1840000
+orosz angol német francia kínai
+
+Argentína#46027695#632000
+spanyol angol francia olasz német
+
+Indonézia#277534122#1320000
+indonéz angol arab japán
+
+Egyesült Királyság#68207116#3200000
+angol francia német spanyol kínai

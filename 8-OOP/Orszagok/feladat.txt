@@ -1,0 +1,35 @@
+Orszag.cs:
+!! egy ország létrejöttekor még nem EU tag
+!! az EU-ból kilépni bárkinek lehet, belépni viszont csak akkor, ha az "angol" és a "francia" is népszerű nyelv az adott országban
+!! ToString(): a végén zárójelben EU ha eu tag
+	<nev>: <nepesseg> fő (EU)
+	
+Bolygo.cs:
+!! beolvasás során minden bolygó 80% valószínűséggel szeretne EU tag lenni 
+
+--------------------------------------
+
+Konzol:
+Magyarország: 9730530 fő (EU)
+Japán: 123294513 fő
+
+Magyarország: 9730530 fő (EU)
+Kanada: 38929902 fő (EU)
+Brazília: 203062512 fő (EU)
+Egyiptom: 111859140 fő (EU)
+Ausztrália: 26105947 fő
+India: 1428627663 fő (EU)
+Japán: 123294513 fő
+Dél-afrikai Köztársaság: 60414495 fő
+Kína: 1411750000 fő
+Olaszország: 58870762 fő (EU)
+Mexikó: 129875529 fő (EU)
+Nigéria: 223804632 fő (EU)
+Oroszország: 144444359 fő (EU)
+Argentína: 46027695 fő (EU)
+Indonézia: 277534122 fő
+Egyesült Királyság: 68207116 fő
+
+
+
+
