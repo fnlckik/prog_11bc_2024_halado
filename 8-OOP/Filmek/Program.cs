@@ -24,6 +24,15 @@ namespace Filmek
             Console.WriteLine(f1);
             Console.WriteLine(f2);
             Console.WriteLine($"{f2.Cim} < {f1.Cim} :: {f2.KorabbiE(f1)}");
+            Console.Clear();
+
+            // ------------------------------------
+            Televizio tv = new Televizio("filmek.txt");
+            //tv.Filmek[0] = null;
+            //Console.WriteLine(tv.Filmek[0]);
+            Film legregebbi = tv.Legregebbi();
+            Console.WriteLine(legregebbi);
+            tv.Kiir("teletex.txt", 10);
         }
     }
 }
