@@ -17,17 +17,17 @@ namespace Orszagok
 
             hu.EutagE = true;
             jp.EutagE = true;
-            
+
             Console.WriteLine(hu);
             Console.WriteLine(jp);
 
-            //Console.Clear();
+            Console.Clear();
             //// ------------------------
 
-            //Random r = new Random();
-            //Bolygo fold = new Bolygo("Föld", "orszagok.txt", r);
-            //Console.WriteLine(fold);
-            //fold.KiirNyelvek("nyelvek.txt");
+            Random r = new Random();
+            Bolygo fold = new Bolygo("Föld", "orszagok.txt", r);
+            Console.WriteLine(fold);
+            fold.KiirNyelvek("nyelvek.txt");
         }
     }
 }

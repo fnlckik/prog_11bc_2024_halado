@@ -5,7 +5,7 @@ Orszag.cs:
 	<nev>: <nepesseg> fő (EU)
 	
 Bolygo.cs:
-!! beolvasás során minden bolygó 80% valószínűséggel szeretne EU tag lenni 
+!! beolvasás során minden ország 80% valószínűséggel szeretne EU tag lenni 
 
 --------------------------------------
 
