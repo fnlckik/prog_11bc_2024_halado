@@ -62,6 +62,7 @@ namespace Filmek
                 if (!mufajok.Contains(value)) return; // garbage collector
                 this.mufaj = value;
             }
+            get => this.mufaj;
         }
 
         public double Imdb

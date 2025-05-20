@@ -8,6 +8,7 @@ namespace Filmek
         private List<Film> filmek;
         private Dictionary<string, int> gyakorisagok;
 
+        #region Konstruktor
         public Televizio(string fajl)
         {
             this.filmek = new List<Film>();
@@ -20,9 +21,24 @@ namespace Filmek
                 this.filmek.Add(film);
             }
             sr.Close();
-            this.gyakorisagok = new Dictionary<string, int>();
+            this.Megszamol();
+        }
+        #endregion
+
+        public string Darabok
+        {
+            get
+            {
+                string s = "";
+                foreach (string mufaj in gyakorisagok.Keys)
+                {
+                    s += $"{mufaj}: {gyakorisagok[mufaj]} db\n";
+                }
+                return s;
+            }
         }
 
+        #region Metódusok
         public Film Legregebbi()
         {
             Film legregebbi = this.filmek[0];
@@ -67,5 +83,24 @@ namespace Filmek
                 }
             }
         }
+
+        private void Megszamol()
+        {
+            this.gyakorisagok = new Dictionary<string, int>();
+            foreach (Film film in this.filmek)
+            {
+                string mufaj = film.Mufaj;
+                if (this.gyakorisagok.ContainsKey(mufaj))
+                {
+                    this.gyakorisagok[mufaj]++;
+                }
+                else
+                {
+                    //this.gyakorisagok[mufaj] = 1;
+                    this.gyakorisagok.Add(mufaj, 1);
+                }
+            }
+        }
+        #endregion
     }
 }
