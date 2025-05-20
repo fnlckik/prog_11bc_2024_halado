@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Filmek
 {
     class Televizio
     {
         private List<Film> filmek;
+        private Dictionary<string, int> gyakorisagok;
 
         public Televizio(string fajl)
         {
@@ -21,6 +20,7 @@ namespace Filmek
                 this.filmek.Add(film);
             }
             sr.Close();
+            this.gyakorisagok = new Dictionary<string, int>();
         }
 
         public Film Legregebbi()

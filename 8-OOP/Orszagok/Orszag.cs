@@ -33,6 +33,8 @@ namespace Orszagok
                 else this.eutagE = false;
             }
         }
+        
+        public HashSet<string> Nyelvek { get => new HashSet<string>(nyelvek); }
 
         //return $"{this.nev}: {this.nepesseg} fő " + (this.eutagE? "(EU)" : "");
         public override string ToString()

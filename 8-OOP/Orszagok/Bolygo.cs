@@ -48,13 +48,28 @@ namespace Orszagok
         // Előállítja, hogy milyen nyelvek vannak a bolygón
         private HashSet<string> KivalogatNyelvek()
         {
-
+            HashSet<string> nyelvek = new HashSet<string>();
+            foreach (Orszag orszag in this.orszagok)
+            {
+                foreach (string nyelv in orszag.Nyelvek)
+                {
+                    nyelvek.Add(nyelv);
+                }
+            }
+            return nyelvek;
         }
 
         public void KiirNyelvek(string fajl)
         {
             // Kiválogatja a nyelveket (halmazba)
+            HashSet<string> nyelvek = this.KivalogatNyelvek();
             // Kiírja a halmaz elemeit
+            StreamWriter sw = new StreamWriter(fajl);
+            foreach (string nyelv in nyelvek)
+            {
+                sw.WriteLine(nyelv);
+            }
+            sw.Close();
         }
     }
 }

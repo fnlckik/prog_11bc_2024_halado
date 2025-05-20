@@ -33,6 +33,11 @@ namespace Filmek
             Film legregebbi = tv.Legregebbi();
             Console.WriteLine(legregebbi);
             tv.Kiir("teletex.txt", 10);
+
+            // Számoljuk meg, hogy melyik műfaj hányszor fordul elő?
+            Console.WriteLine(tv.Darabok);
+            // akció: 3 db
+            // horror: 2 db
         }
     }
 }
