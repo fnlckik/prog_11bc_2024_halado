@@ -39,6 +39,8 @@ namespace Filmek
             Console.WriteLine(tv.Darabok);
             // akció: 3 db
             // horror: 2 db
+
+
         }
     }
 }
