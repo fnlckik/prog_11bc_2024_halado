@@ -13,6 +13,7 @@ namespace Filmek
 
         //private HashSet<string> mufajok = new HashSet<string> { "akcio", "fantasy", "kaland", "horror" };
 
+        #region Konstruktorok
         public Film(string cim, int ev, string mufaj, double imdb, int nezok)
         {
             this.cim = cim;
@@ -42,7 +43,9 @@ namespace Filmek
             this.imdb = double.Parse(sor[3]);
             this.nezok = int.Parse(sor[4]);
         }
+        #endregion
 
+        #region Property
         public string Cim { get => this.cim; }
 
         public string Ev
@@ -69,6 +72,7 @@ namespace Filmek
         {
             get => Math.Round(this.imdb, 2);
         }
+        #endregion
 
         public override string ToString()
         {
@@ -87,6 +91,11 @@ namespace Filmek
             double osszeg = this.imdb * this.nezok;
             this.nezok++;
             this.imdb = (osszeg + pont) / this.nezok;
+        }
+
+        public string Ertek()
+        {
+            return $"(\"{cim}\", {ev}, \"{mufaj}\", {imdb.ToString().Replace(',', '.')}, {nezok})";
         }
     }
 }

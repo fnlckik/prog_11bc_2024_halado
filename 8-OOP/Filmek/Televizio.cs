@@ -25,6 +25,7 @@ namespace Filmek
         }
         #endregion
 
+        #region Getter, Setter
         public string Darabok
         {
             get
@@ -37,6 +38,7 @@ namespace Filmek
                 return s;
             }
         }
+        #endregion
 
         #region Metódusok
         public Film Legregebbi()
@@ -100,6 +102,20 @@ namespace Filmek
                     this.gyakorisagok.Add(mufaj, 1);
                 }
             }
+        }
+
+        public void AdatGeneralas()
+        {
+            StreamWriter sw = new StreamWriter("../../adatbazis/adatok.sql");
+            sw.WriteLine("TRUNCATE filmek;");
+            sw.WriteLine("INSERT INTO filmek (cim, ev, mufaj, imdb, nezok)");
+            sw.WriteLine("VALUES");
+            foreach (Film film in filmek)
+            {
+                string veg = film != filmek[filmek.Count-1] ? "," : ";";
+                sw.WriteLine(film.Ertek() + veg);
+            }
+            sw.Close();
         }
         #endregion
     }

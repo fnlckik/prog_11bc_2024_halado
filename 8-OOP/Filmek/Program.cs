@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 
 namespace Filmek
 {
@@ -40,7 +41,35 @@ namespace Filmek
             // akció: 3 db
             // horror: 2 db
 
+            tv.AdatGeneralas();
 
+            Console.Clear();
+            // Nem része a beadandónak! Csak megmutattam, mert kíváncsi volt a csoport!
+            DbQuery();
+            Console.WriteLine("Vége!");
+        }
+
+        private static void DbQuery()
+        {
+            Console.Write("Melyik évnél későbbi filmek érdekelnek? ");
+            string connectionString = "Server=localhost;Database=televizio;User ID=root;Password=;";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = $"SELECT * FROM filmek WHERE cim = @cim;";
+                using (var command = new MySqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@cim", Console.ReadLine());
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Feltételezve, hogy a Users tábla két oszlopot tartalmaz: Id és Name
+                            Console.WriteLine($"Cím: {reader["cim"]}, Év: {reader["ev"]}");
+                        }
+                    }
+                }
+            }
         }
     }
 }
