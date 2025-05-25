@@ -1,4 +1,4 @@
--- Választó lekérdezések (select)
+-- Választó lekérdezések (SELECT)
 -- 1. Milyen műfajok vannak?
 SELECT DISTINCT mufaj FROM filmek;
 
@@ -15,10 +15,10 @@ FROM filmek
 ORDER BY imdb DESC
 LIMIT 10;
 
--- Csoportosító lekérdezések (group by)
+-- Csoportosító lekérdezések (GROUP BY)
 -- 4. Hány darab van az egyes műfajokból?
 -- Aggregátor függvény: összesítő függvények
--- COUNT, SUM, AVG, MIN, MAX
+-- Pl.: COUNT, SUM, AVG, MIN, MAX
 -- COUNT(*): Hány ilyen rekord van?
 SELECT mufaj, COUNT(*) AS "darab", MAX(imdb) AS "legjobb_imdb"
 FROM filmek
@@ -39,3 +39,13 @@ SELECT mufaj, ROUND(AVG(imdb), 2) AS atlag
 FROM filmek
 GROUP BY mufaj
 HAVING atlag > 5.5;
+
+-- Frissító lekérdezés (UPDATE)
+-- 6. Az összes 2000 előtti film értékelése 0.5 ponttal emelkedik (ha lehetséges)
+UPDATE filmek
+SET imdb = imdb + 0.5
+WHERE ev < 2000 AND imdb <= 9.5;
+
+-- 7. Töröljük azokat a filmeket, amelyek címe tartalmaz ':' karaktert!
+DELETE FROM filmek
+WHERE cim LIKE "%:%";
