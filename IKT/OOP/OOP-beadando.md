@@ -60,7 +60,7 @@ Nem választhattok olyan témát, amit órán csináltunk: diákok, filmek, orsz
 
 	*Az sem gond, ha mind véletlenszerű, de például filmek címét előkészíthetitek egy fájlban, majd azt beolvasva generálhattok hozzájuk véletlenszerű adatokat.*
 
-4. Csináljatok egy `lekerdezesek.sql` nevű fájlt, amelyben `SQL` **lekérdezések** találhatók. Mindegyik lekérdezés fölött kommentben jelenítsétek meg, hogy pontosan mit csinál! - **10p**
+4. Csináljatok egy `lekerdezesek.sql` nevű fájlt, amelyben `SQL` **lekérdezések** találhatók. Mindegyik lekérdezés fölött kommentben jelenítsétek meg, hogy pontosan **mit csinál**! - **10p**
 
    Legyen egy-egy a következők mindegyikéből:
    - választó lekérdezés, amelyben van szűrési feltétel - `SELECT`, `FROM`, `WHERE`
