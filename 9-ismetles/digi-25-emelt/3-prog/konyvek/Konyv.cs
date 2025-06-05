@@ -16,5 +16,23 @@
             this.leiras = leiras;
             this.peldany = peldany;
         }
+
+        public int Peldany { get => peldany; }
+
+        // "alma fa korte fa".Substring(8, 5)
+        //public bool SzerzoE(string nev)
+        //{
+        //    int i = 0;
+        //    while (i < this.leiras.Length - nev.Length && !(this.leiras.Substring(i, nev.Length) == nev))
+        //    {
+        //        i++;
+        //    }
+        //    return i < this.leiras.Length - nev.Length;
+        //}
+
+        public bool SzerzoE(string nev)
+        {
+            return this.leiras.Contains(nev);
+        }
     }
 }
