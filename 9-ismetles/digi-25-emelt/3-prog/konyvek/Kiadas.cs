@@ -4,6 +4,8 @@ using System.IO;
 
 namespace konyvek
 {
+    // Mj.: 13. osztály backend MVC kódszervezés
+    // Hogyan kommunikál egymással a másik két osztály? (controller)
     // Konténer osztály: egy másik osztály elemeiből tartalmaz egy kollekciót
     internal class Kiadas
     {
@@ -57,6 +59,46 @@ namespace konyvek
                 }
             }
             return new Tuple<int, int>(maxe, db);
+        }
+
+        // küszöbérték
+        public Konyv KulfoldiNepszeru(int k)
+        {
+            int i = 0;
+            while (!konyvek[i].KulfoldiNepszeruE(k))
+            {
+                i++;
+            }
+            return konyvek[i];
+        }
+
+        private Dictionary<string, int> KiadasokSzamolasa()
+        {
+            // Először hány példányban adták ki a könyvet?
+            Dictionary<string, int> elsoPeldanyok = new Dictionary<string, int>();
+            Dictionary<string, int> darabok = new Dictionary<string, int>();
+
+            foreach (Konyv konyv in konyvek)
+            {
+                if (elsoPeldanyok.ContainsKey(konyv.Leiras))
+                {
+                    if (konyv.Peldany > elsoPeldanyok[konyv.Leiras])
+                    {
+                        darabok[konyv.Leiras]++;
+                    }
+                }
+                else
+                {
+                    elsoPeldanyok.Add(konyv.Leiras, konyv.Peldany);
+                    darabok.Add(konyv.Leiras, 0);
+                }
+            }
+            return darabok;
+        }
+
+        public HashSet<string> UjraKiadottak()
+        {
+            Dictionary<string, int> darabok = this.KiadasokSzamolasa();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace konyvek
 {
+    // Mit lát a felhasználó? (view)
     internal class Program
     {
         static void Main(string[] args)
@@ -23,6 +24,14 @@ namespace konyvek
             Console.WriteLine("3. feladat:");
             Tuple<int, int> maxPeldany = kiadas.MaxPeldany();
             Console.WriteLine($"Legnagyobb példányszám: {maxPeldany.Item1}, előfordult {maxPeldany.Item2} alkalommal");
+
+            // F4
+            Console.WriteLine("4. feladat:");
+            Konyv kulfoldiNepszeru = kiadas.KulfoldiNepszeru(40000);
+            Console.WriteLine(kulfoldiNepszeru);
+
+            // F6
+
         }
     }
 }

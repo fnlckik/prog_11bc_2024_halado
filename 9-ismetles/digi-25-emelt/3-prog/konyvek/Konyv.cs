@@ -1,5 +1,8 @@
-﻿namespace konyvek
+﻿using System;
+
+namespace konyvek
 {
+    // Milyen adatokat tárolunk? (model)
     internal class Konyv
     {
         private int ev;
@@ -18,6 +21,7 @@
         }
 
         public int Peldany { get => peldany; }
+        public string Leiras { get => leiras; }
 
         // "alma fa korte fa".Substring(8, 5)
         //public bool SzerzoE(string nev)
@@ -33,6 +37,16 @@
         public bool SzerzoE(string nev)
         {
             return this.leiras.Contains(nev);
+        }
+
+        public bool KulfoldiNepszeruE(int k)
+        {
+            return !this.magyarE && this.peldany >= k;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.ev}/{this.negyedev}. {this.leiras}";
         }
     }
 }
