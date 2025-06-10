@@ -22,6 +22,8 @@ namespace konyvek
 
         public int Peldany { get => peldany; }
         public string Leiras { get => leiras; }
+        public int Ev { get => ev; }
+        public bool MagyarE { get => magyarE; }
 
         // "alma fa korte fa".Substring(8, 5)
         //public bool SzerzoE(string nev)

@@ -4,12 +4,26 @@ using System.IO;
 
 namespace konyvek
 {
+    public class Statisztika
+    {
+        public int mk, mp, kk, kp;
+
+        public Statisztika(int mk, int mp, int kk, int kp)
+        {
+            this.mk = mk;
+            this.mp = mp;
+            this.kk = kk;
+            this.kp = kp;
+        }
+    }
+
     // Mj.: 13. osztály backend MVC kódszervezés
     // Hogyan kommunikál egymással a másik két osztály? (controller)
     // Konténer osztály: egy másik osztály elemeiből tartalmaz egy kollekciót
     internal class Kiadas
     {
         private List<Konyv> konyvek;
+        private Dictionary<int, Statisztika> statisztikak;
 
         public Kiadas(string fajlnev)
         {
@@ -23,9 +37,43 @@ namespace konyvek
                 konyvek.Add(konyv);
             }
             sr.Close();
+            Osszegzes();
         }
 
         public List<Konyv> Konyvek { get => new List<Konyv>(konyvek); }
+
+        private void Osszegzes()
+        {
+            statisztikak = new Dictionary<int, Statisztika>();
+            foreach (Konyv konyv in this.konyvek)
+            {
+                if (!statisztikak.ContainsKey(konyv.Ev))
+                {
+                    if (konyv.MagyarE)
+                    {
+                        statisztikak.Add(konyv.Ev, new Statisztika(1, konyv.Peldany, 0, 0));
+                    }
+                    else
+                    {
+                        statisztikak.Add(konyv.Ev, new Statisztika(0, 0, 1, konyv.Peldany));
+                    }
+                }
+                else
+                {
+                    Statisztika stat = statisztikak[konyv.Ev];
+                    if (konyv.MagyarE)
+                    {
+                        stat.mk++;
+                        stat.mp += konyv.Peldany;
+                    }
+                    else
+                    {
+                        stat.kk++;
+                        stat.kp += konyv.Peldany;
+                    }
+                }
+            }
+        }
 
         public int KiadasokSzama(string nev)
         {
@@ -99,6 +147,22 @@ namespace konyvek
         public HashSet<string> UjraKiadottak()
         {
             Dictionary<string, int> darabok = this.KiadasokSzamolasa();
+            HashSet<string> leirasok = new HashSet<string>();
+            foreach (string leiras in darabok.Keys)
+            {
+                if (darabok[leiras] >= 2)
+                {
+                    leirasok.Add(leiras);
+                }
+            }
+            //foreach (KeyValuePair<string, int> elem in darabok) // Key, Value
+            //{
+            //    if (elem.Value >= 2)
+            //    {
+            //        leirasok.Add(elem.Key);
+            //    }
+            //}
+            return leirasok;
         }
     }
 }

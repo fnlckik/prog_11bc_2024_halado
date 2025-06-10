@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace konyvek
 {
@@ -30,8 +31,17 @@ namespace konyvek
             Konyv kulfoldiNepszeru = kiadas.KulfoldiNepszeru(40000);
             Console.WriteLine(kulfoldiNepszeru);
 
-            // F6
+            // F5
 
+
+            // F6
+            Console.WriteLine("6. feladat:");
+            Console.WriteLine("Legalább kétszer, nagyobb példányszámban újra kiadott könyvek:");
+            HashSet<string> cimek = kiadas.UjraKiadottak();
+            foreach (string cim in cimek)
+            {
+                Console.WriteLine(cim);
+            }
         }
     }
 }
